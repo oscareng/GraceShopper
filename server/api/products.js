@@ -1,0 +1,57 @@
+"use strict";
+
+const router = require("express").Router();
+const { Product } = require("../db");
+
+//Get /api/products
+router.get("/", async (req, res, next) => {
+  try {
+    const products = await Product.findAll();
+    res.json(products);
+  } catch (error) {
+    next(error);
+  }
+});
+
+// GET /api/products/:id
+// router.get("/:id", async (req, res, next) => {
+//   try {
+//     const product = await Product.findByPk(req.params.id);
+//     if (product) res.json(product);
+//     else res.sendStatus(404);
+//   } catch (error) {
+//     next(error);
+//   }
+// });
+
+// POST /api/products/
+router.post("/", async (req, res, next) => {
+  try {
+    res.status(201).json(await Product.create(req.body));
+  } catch (error) {
+    next(error);
+  }
+});
+
+// PUT /api/products/:id
+// router.put("/:id", async (req, res, next) => {
+//   try {
+//     const product = await Product.findByPk(req.params.id);
+//     res.json(await product.update(req.body));
+//   } catch (error) {
+//     next(error);
+//   }
+// });
+
+// DELETE /api/products/:id
+// router.delete("/:id", async (req, res, next) => {
+//   try {
+//     const product = await Product.findByPk(req.params.id);
+//     await product.destroy();
+//     res.json(product);
+//   } catch (error) {
+//     next(error);
+//   }
+// });
+
+module.exports = router;
