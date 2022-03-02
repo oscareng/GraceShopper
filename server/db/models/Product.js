@@ -15,7 +15,7 @@ const Product = db.define("Product", {
   gender: { type: Sequelize.STRING, allowNull: false, defaultValue: "Male" },
   size: { type: Sequelize.STRING, allowNull: false, defaultValue: "Medium" },
   category: { type: Sequelize.STRING, allowNull: false, defaultValue: "Shirt" },
-  quantity: { type: Sequelize.INTEGER, allowNull: false, defaultValue: 1 },
+  stock: { type: Sequelize.INTEGER, allowNull: false, defaultValue: 1 },
   imageUrl: { type: Sequelize.STRING, defaultValue: "png" },
 });
 
