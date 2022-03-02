@@ -1,9 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Abel&family=Bebas+Neue&family=Playfair+Display+SC&family=Staatliches&display=swap');
+
 body {
-  font-family: sans-serif;
+  font-family: 'Abel';
 }
 
 a {
   text-decoration: none;
+}
+a:visited {
+  text-decoration: none;
+  color: black;
+}
+a:hover {
+  transition: all 0.1s ease-in-out;
+  transform: scale(1.2);
 }
 
 label {
@@ -13,9 +23,17 @@ label {
 nav a {
   display: inline-block;
   margin: 1em;
+  padding-top: 10px;
+  font-size: 1.2rem;
 }
 
-form div {
-  margin: 1em;
-  display: inline-block;
+#logo {
+  height: 30px;
+  width: 30px;
+}
+
+nav > div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
 }
