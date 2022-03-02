@@ -1,13 +1,3 @@
-<<<<<<< HEAD
-import React, { Component, Fragment } from "react";
-import { connect } from "react-redux";
-import { withRouter, Route, Switch, Redirect } from "react-router-dom";
-import { Login, Signup } from "./components/AuthForm";
-import AllProducts from "./components/AllProducts";
-import Home from "./components/Home";
-import { me } from "./store";
-import Checkout from "./components/Checkout";
-=======
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { withRouter, Route, Switch, Redirect } from 'react-router-dom';
@@ -17,7 +7,6 @@ import SingleProduct from './components/SingleProduct';
 import Checkout from './components/Checkout';
 import Home from './components/Home';
 import { me } from './store';
->>>>>>> 2508654b722ec8fbc909de334027a79102a9882b
 
 /**
  * COMPONENT
