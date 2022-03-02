@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 const AllProducts = () => {
   //this grabs the robots from the redux store
   const products = useSelector((state) => state.products);
-  console.log('MY PRODUCTS:', products);
   //This gives up the dispatch function from redux
   const dispatch = useDispatch();
 
@@ -18,12 +17,12 @@ const AllProducts = () => {
     <div>
       {products.map((product) => {
         return (
-          <div key={product.id}>
-            <h1>{product.name}</h1>
+          <div key={product.id} className="all-products">
+            <h2>{product.name}</h2>
             <Link to={`/products/${product.id}`}>
               <img
                 src={product.imageUrl}
-                style={{ width: '200px', height: '200px' }}
+                // style={{ width: '200px', height: '200px' }}
               />
             </Link>
           </div>
