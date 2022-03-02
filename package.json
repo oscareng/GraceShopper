@@ -30,7 +30,11 @@
     "jsonwebtoken": "^8.5.1",
     "morgan": "^1.9.1",
     "pg": "^8.5.1",
+<<<<<<< HEAD
     "react-currency-format": "^1.1.0",
+=======
+    "react-icons": "^4.3.1",
+>>>>>>> 2508654b722ec8fbc909de334027a79102a9882b
     "sequelize": "^6.17.0"
   },
   "devDependencies": {
