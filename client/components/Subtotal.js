@@ -17,7 +17,10 @@ function Subtotal() {
               <input type="checkbox" /> This order contains a gift
             </small> */}
           </>
+<<<<<<< HEAD
+=======
           //Hi
+>>>>>>> 2508654b722ec8fbc909de334027a79102a9882b
         )}
         decimalScale={2}
         value={getBasketTotal(basket)}

@@ -16,5 +16,6 @@ ReactDOM.render(
       </StateProvider>
     </Router>
   </Provider>,
+
   document.getElementById('app')
 );
