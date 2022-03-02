@@ -51,7 +51,7 @@ nav > div {
   justify-content: space-between;
 }
 
-/* Added for Checkout page */
+/*  Checkout */
 .checkout {
   display: flex;
   padding: 20px;

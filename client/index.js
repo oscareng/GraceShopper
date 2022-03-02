@@ -1,12 +1,12 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import { Provider } from "react-redux";
-import { Router } from "react-router-dom";
-import history from "./history";
-import store from "./store";
-import App from "./App";
-import { StateProvider } from "./components/StateProvider";
-import reducer, { initialState } from "./store/CartReducer";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { Router } from 'react-router-dom';
+import history from './history';
+import store from './store';
+import App from './App';
+import { StateProvider } from './components/StateProvider';
+import reducer, { initialState } from './store/CartReducer';
 
 ReactDOM.render(
   <Provider store={store}>
@@ -16,5 +16,6 @@ ReactDOM.render(
       </StateProvider>
     </Router>
   </Provider>,
-  document.getElementById("app")
+
+  document.getElementById('app')
 );
