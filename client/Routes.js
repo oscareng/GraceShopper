@@ -4,13 +4,13 @@ import { withRouter, Route, Switch, Redirect } from 'react-router-dom';
 import { Login, Signup } from './components/AuthForm';
 import AllProducts from './components/AllProducts';
 import SingleProduct from './components/SingleProduct';
-import Confirmation from "./components/Confirmation";
+import Confirmation from './components/Confirmation';
 import { LandingPage } from './components/LandingPage';
 import Home from './components/Home';
 import { me } from './store';
-import WomenProducts from "./components/WomenProducts";
-import MenProducts from "./components/MenProducts";
-
+import WomenProducts from './components/WomenProducts';
+import MenProducts from './components/MenProducts';
+import Checkout from './components/Checkout';
 
 /**
  * COMPONENT

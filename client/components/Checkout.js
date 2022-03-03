@@ -5,6 +5,12 @@ import Subtotal from './Subtotal';
 
 function Checkout() {
   const [{ basket, user }, dispatch] = useStateValue();
+  //Example hook:
+  /*
+   useEffect(() => {
+    dispatch(fetchSingleProduct(id));
+  }, []);
+  */
   return (
     <div className="checkout">
       <div className="checkout__left">
@@ -31,10 +37,6 @@ function Checkout() {
                 price={item.price}
               />;
             })}
-          </div>
-        ) : (
-          <div>
-            <h2>Your Shopping Basket is empty</h2>
           </div>
         )}
       </div>
