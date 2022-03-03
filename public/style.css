@@ -122,3 +122,12 @@ nav > div {
   border-color: #a88734 #9c7e31 #846a29;
   color: #111;
 }
+
+.confirmation {
+  text-align: center;
+  padding-top: 100px;
+}
+
+.confirmation > small {
+  text-align: center;
+}
