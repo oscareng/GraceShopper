@@ -5,9 +5,12 @@ import { Login, Signup } from './components/AuthForm';
 import AllProducts from './components/AllProducts';
 import SingleProduct from './components/SingleProduct';
 import Confirmation from './components/Confirmation';
-import Checkout from './components/Checkout';
+import { LandingPage } from './components/LandingPage';
 import Home from './components/Home';
 import { me } from './store';
+import WomenProducts from './components/WomenProducts';
+import MenProducts from './components/MenProducts';
+import Checkout from './components/Checkout';
 
 /**
  * COMPONENT
@@ -24,20 +27,25 @@ class Routes extends Component {
       <div>
         {isLoggedIn ? (
           <Switch>
+            <Route path="/" exact component={LandingPage} />
             <Route path="/home" component={Home} />
-            <Redirect to="/home" />
-          </Switch>
-        ) : (
-          <Switch>
-            <Route path="/" exact component={Login} />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
             <Route exact path="/products" component={AllProducts} />
             <Route exact path="/products/:id" component={SingleProduct} />
-            <Route path="/checkout">
-              <Checkout />
-            </Route>
+            {/* <Redirect to="/home" /> */}
+          </Switch>
+        ) : (
+          <Switch>
+            <Route path="/" exact component={LandingPage} />
+            <Route path="/login" component={Login} />
+            <Route path="/signup" component={Signup} />
+            <Route exact path="/products" component={AllProducts} />
+            <Route exact path="/products/:id" component={SingleProduct} />
+            <Route path="/checkout" component={Checkout} />
             <Route path="/confirmation" component={Confirmation} />
+            <Route exact path="/womens" component={WomenProducts} />
+            <Route exact path="/mens" component={MenProducts} />
           </Switch>
         )}
       </div>
