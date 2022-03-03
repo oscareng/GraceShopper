@@ -1,8 +1,8 @@
-import React from 'react';
-import CurrencyFormat from 'react-currency-format';
-import { getBasketTotal } from '../store/cartReducer';
-import { useStateValue } from './StateProvider';
-import { Link } from 'react-router-dom';
+import React from "react";
+import CurrencyFormat from "react-currency-format";
+import { getBasketTotal } from "../store/cartReducer";
+import { useStateValue } from "./StateProvider";
+import { Link } from "react-router-dom";
 
 function Subtotal() {
   // const history = useHistory();
@@ -26,7 +26,7 @@ function Subtotal() {
         thousandSeparator={true}
         prefix={"$"}
       />
-      <Link to={'/confirmation'}>
+      <Link to={"/confirmation"}>
         <button>Confirm Purchase</button>
       </Link>
     </div>

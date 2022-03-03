@@ -17,13 +17,6 @@ export const initialState = {
   ],
   user: null,
 };
-export const removeFromBasket = () => {
-  //remove item from basket
-  dispatch({
-    type: "REMOVE_FROM_BASKET",
-    id: id,
-  });
-};
 
 export const getBasketTotal = (basket) =>
   basket?.reduce((amount, item) => item.price + amount, 0);
