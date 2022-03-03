@@ -4,9 +4,13 @@ import { withRouter, Route, Switch, Redirect } from 'react-router-dom';
 import { Login, Signup } from './components/AuthForm';
 import AllProducts from './components/AllProducts';
 import SingleProduct from './components/SingleProduct';
+import Confirmation from "./components/Confirmation";
 import { LandingPage } from './components/LandingPage';
 import Home from './components/Home';
 import { me } from './store';
+import WomenProducts from "./components/WomenProducts";
+import MenProducts from "./components/MenProducts";
+
 
 /**
  * COMPONENT
@@ -38,6 +42,10 @@ class Routes extends Component {
             <Route path="/signup" component={Signup} />
             <Route exact path="/products" component={AllProducts} />
             <Route exact path="/products/:id" component={SingleProduct} />
+            <Route path="/checkout" component={Checkout} />
+            <Route path="/confirmation" component={Confirmation} />
+            <Route exact path="/womens" component={WomenProducts} />
+            <Route exact path="/mens" component={MenProducts} />
           </Switch>
         )}
       </div>

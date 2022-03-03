@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Abel&family=Bebas+Neue&family=Playfair+Display+SC&family=Staatliches&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Abel&family=Bebas+Neue&family=Playfair+Display+SC&family=Staatliches&display=swap");
 
 body {
-  font-family: 'Abel';
+  font-family: "Abel";
 }
 
 label {
@@ -80,7 +80,7 @@ nav > div {
 .checkoutProduct__info {
   padding-left: 20px;
 }
-.checkoutProduct__title {
+.checkoutProduct__name {
   font-size: 17px;
   font-weight: 800;
 }

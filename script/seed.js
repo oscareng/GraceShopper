@@ -2,9 +2,15 @@
 
 const {
   db,
-  models: { User, Product },
+  models: { User, Product, LineItem, Order },
 } = require("../server/db");
 
+const lineitems = [
+  { name: "Shirt1", saleprice: 1 },
+  { name: "Shirt1", saleprice: 1 },
+  { name: "Shirt1", saleprice: 1 },
+];
+const orders = [{ totalprice: 1 }, { totalprice: 1 }, { totalprice: 1 }];
 const products = [
   {
     name: "Shirt1",
@@ -49,12 +55,34 @@ async function seed() {
   const users = await Promise.all([
     User.create({ username: "cody", password: "123" }),
     User.create({ username: "murphy", password: "123" }),
+    User.create({ username: "john", password: "123" }),
   ]);
   const productSeed = await Promise.all(
     products.map((product) => {
       return Product.create(product);
     })
   );
+
+  const lineItemSeed = await Promise.all(
+    lineitems.map((product) => {
+      return LineItem.create(product);
+    })
+  );
+
+  const OrderSeed = await Promise.all(
+    orders.map((product) => {
+      return Order.create(product);
+    })
+  );
+
+  //Find cody and Shirt1 and associate them
+  const cody = await User.findOne({ where: { username: "cody" } });
+  const shirt = await Product.findOne({ where: { name: "Shirt1" } });
+  const order = await Order.findOne({ where: { ordernumber: 1 } });
+  const lineitem = await LineItem.findOne({ where: { name: "Shirt1" } });
+  await cody.addOrder(order);
+  await order.addLineItem(lineitem);
+  await lineitem.addProduct(shirt);
   console.log(`seeded ${users.length} users`);
   console.log(`seeded successfully`);
   return {
