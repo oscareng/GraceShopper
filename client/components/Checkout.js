@@ -32,6 +32,10 @@ function Checkout() {
               />;
             })}
           </div>
+        ) : (
+          <div>
+            <h2>Your Shopping Basket is empty</h2>
+          </div>
         )}
       </div>
       {basket.length > 0 && (

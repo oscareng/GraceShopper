@@ -20,6 +20,7 @@ export const initialState = {
   user: null,
 };
 
+
 //Action Types
 const ADD_TO_BASKET = 'ADD_TO_BASKET';
 const REMOVE_FROM_BASKET = 'REMOVE_FROM_BASKET';
@@ -69,6 +70,7 @@ export const fetchRemoveFromBasket = (id) => {
     }
   };
 };
+
 
 export const fetchGetBasketTotal = (basket) => {
   return async (dispatch) => {
