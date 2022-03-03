@@ -2,27 +2,13 @@ export const initialState = {
   basket: [
     {
       id: 1,
-      name: "Shirt1",
-      price: 20,
-      imageUrl:
-        "https://images.pexels.com/photos/8485725/pexels-photo-8485725.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
-    },
-    {
-      id: 2,
-      name: "Shirt2",
-      price: 20,
-      imageUrl:
-        "https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
+      title: 'Shirt',
+      price: 90,
+      image:
+        'https://www.pexels.com/photo/portrait-of-woman-with-ring-on-her-hand-10129710/',
     },
   ],
   user: null,
-};
-export const removeFromBasket = () => {
-  //remove item from basket
-  dispatch({
-    type: "REMOVE_FROM_BASKET",
-    id: id,
-  });
 };
 
 export const getBasketTotal = (basket) =>
@@ -30,14 +16,14 @@ export const getBasketTotal = (basket) =>
 
 export default function cartreducer(state = initialState, action) {
   switch (action.type) {
-    case "ADD_TO_BASKET":
+    case 'ADD_TO_BASKET':
       //Logic for adding item to basket
       return {
         ...state,
         basket: [...state.basket, action.item],
       };
 
-    case "REMOVE_FROM_BASKET":
+    case 'REMOVE_FROM_BASKET':
       //Logic for removing item from basket
 
       //we clone the basket
@@ -56,7 +42,7 @@ export default function cartreducer(state = initialState, action) {
         );
       }
       return { ...state, basket: newBasket };
-    case "SET_USER":
+    case 'SET_USER':
       return {
         ...state,
         user: action.user,
