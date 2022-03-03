@@ -5,6 +5,7 @@ import { useStateValue } from './StateProvider';
 import { Link } from 'react-router-dom';
 
 function Subtotal() {
+  // const history = useHistory();
   const [{ basket }, dispatch] = useStateValue();
   return (
     <div className="subtotal">
@@ -21,9 +22,9 @@ function Subtotal() {
         )}
         decimalScale={2}
         value={getBasketTotal(basket)}
-        displayType={'text'}
+        displayType={"text"}
         thousandSeparator={true}
-        prefix={'$'}
+        prefix={"$"}
       />
       <Link to={'/confirmation'}>
         <button>Confirm Purchase</button>

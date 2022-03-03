@@ -1,7 +1,8 @@
-import React from 'react';
-import { useStateValue } from './StateProvider';
+import React from "react";
+import { useStateValue } from "./StateProvider";
+import removeFromBasket from "../store/cartReducer";
 
-function CheckoutProduct({ id, title, image, price }) {
+export default function CheckoutProduct({ id, name, imageUrl, price }) {
   const [{ basket }, dispatch] = useStateValue();
 
   const removeFromBasket = () => {
@@ -14,9 +15,9 @@ function CheckoutProduct({ id, title, image, price }) {
 
   return (
     <div className="checkoutProduct">
-      <img className="checkoutProduct__image" src={image} alt="" />
+      <img className="checkoutProduct__image" src={imageUrl} alt="" />
       <div className="checkoutProduct__info">
-        <p className="checkoutProduct__title">{title}</p>
+        <p className="checkoutProduct__name">{name}</p>
         <p className="checkoutProduct__price">
           <small>$</small>
           <strong>{price}</strong>
@@ -26,5 +27,3 @@ function CheckoutProduct({ id, title, image, price }) {
     </div>
   );
 }
-
-export default CheckoutProduct;

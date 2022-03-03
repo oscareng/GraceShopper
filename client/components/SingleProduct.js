@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { fetchSingleProduct } from '../store/singleProductReducer';
-import { Link } from 'react-router-dom';
-import { useParams } from 'react-router';
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchSingleProduct } from "../store/singleProductReducer";
+import { Link } from "react-router-dom";
+import { useParams } from "react-router";
 
 const SingleProduct = () => {
   const product = useSelector((state) => state.product);
@@ -18,7 +18,7 @@ const SingleProduct = () => {
       <div key={product.id}>
         <img
           src={product.imageUrl}
-          style={{ width: '400px', height: '400px' }}
+          style={{ width: "400px", height: "400px" }}
         />
         <h1>{product.name}</h1>
         <h2>Size: {product.size}</h2>
