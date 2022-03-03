@@ -1,7 +1,7 @@
-import React from "react";
-import { useStateValue } from "./StateProvider.js";
-import CheckoutProduct from "./CheckoutProduct.js";
-import Subtotal from "./Subtotal";
+import React from 'react';
+import { useStateValue } from './StateProvider.js';
+import CheckoutProduct from './CheckoutProduct.js';
+import Subtotal from './Subtotal';
 
 function Checkout() {
   const [{ basket, user }, dispatch] = useStateValue();
@@ -13,13 +13,14 @@ function Checkout() {
           src="https://www.gw-world.com/fileadmin/_processed_/4/4/csm_fashion_Header_1920x400_2f48325f56.jpg"
           alt=""
         />
-        {basket?.length === 0 ? (
+        {basket.length === 0 ? (
           <div>
             <h2>Your Shopping Basket is empty</h2>
           </div>
         ) : (
           <div>
-            <h3>Hello, {user?.username}</h3>
+            {/* <h3>Hello, {user?.username}</h3> */}
+            <h3>Hello loyal customer! :D </h3>
             <h2 className="checkout__name">Your Shopping Basket</h2>
             {basket.map((item) => {
               console.log(item);
