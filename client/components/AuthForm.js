@@ -1,12 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { authenticate } from '../store';
+import { Link } from 'react-router-dom';
 
 /**
  * COMPONENT
  */
 const AuthForm = (props) => {
   const { name, displayName, handleSubmit, error } = props;
+  //will review later to route to landing page after logging in.
 
   return (
     <div>
@@ -28,6 +30,15 @@ const AuthForm = (props) => {
         </div>
         {error && error.response && <div> {error.response.data} </div>}
       </form>
+
+      <hr />
+      {displayName === 'Login' ? (
+        <Link to="/signup">
+          <button> Sign Up Here </button>
+        </Link>
+      ) : (
+        'Sign up and "Evolve" your wardrobe!'
+      )}
     </div>
   );
 };
