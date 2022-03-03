@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
  */
 const AuthForm = (props) => {
   const { name, displayName, handleSubmit, error } = props;
-  //will review later to route to landing page after logging in
+  //will review later to route to landing page after logging in.
 
   return (
     <div>
