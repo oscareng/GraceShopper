@@ -5,6 +5,12 @@ import Subtotal from './Subtotal';
 
 function Checkout() {
   const [{ basket, user }, dispatch] = useStateValue();
+  //Example hook:
+  /*
+   useEffect(() => {
+    dispatch(fetchSingleProduct(id));
+  }, []);
+  */
   return (
     <div className="checkout">
       <div className="checkout__left">
