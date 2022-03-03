@@ -53,15 +53,4 @@ router.post('/', async (req, res, next) => {
 //   }
 // });
 
-// DELETE /api/products/:id
-// router.delete("/:id", async (req, res, next) => {
-//   try {
-//     const product = await Product.findByPk(req.params.id);
-//     await product.destroy();
-//     res.json(product);
-//   } catch (error) {
-//     next(error);
-//   }
-// });
-
 module.exports = router;
