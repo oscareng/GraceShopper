@@ -1,20 +1,19 @@
 import React from "react";
 import { useStateValue } from "./StateProvider";
-import removeFromBasket from "../store/cartReducer";
 
-export default function CheckoutProduct({ id, name, imageUrl, price }) {
+function CheckoutProduct({ id, name, imageUrl, price }) {
   const [{ basket }, dispatch] = useStateValue();
 
   const removeFromBasket = () => {
     //remove item from basket
     dispatch({
-      type: 'REMOVE_FROM_BASKET',
+      type: "REMOVE_FROM_BASKET",
       id: id,
     });
   };
 
   return (
-    <div className="checkoutProduct">
+    <div className="checkoutProduct" key={id}>
       <img className="checkoutProduct__image" src={imageUrl} alt="" />
       <div className="checkoutProduct__info">
         <p className="checkoutProduct__name">{name}</p>
@@ -27,3 +26,4 @@ export default function CheckoutProduct({ id, name, imageUrl, price }) {
     </div>
   );
 }
+export default CheckoutProduct;
