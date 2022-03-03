@@ -5,6 +5,14 @@ import removeFromBasket from "../store/cartReducer";
 export default function CheckoutProduct({ id, name, imageUrl, price }) {
   const [{ basket }, dispatch] = useStateValue();
 
+  const removeFromBasket = () => {
+    //remove item from basket
+    dispatch({
+      type: 'REMOVE_FROM_BASKET',
+      id: id,
+    });
+  };
+
   return (
     <div className="checkoutProduct">
       <img className="checkoutProduct__image" src={imageUrl} alt="" />
