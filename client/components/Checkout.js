@@ -1,12 +1,12 @@
-import React from 'react';
-import { useStateValue } from './StateProvider.js';
-import CheckoutProduct from './CheckoutProduct.js';
-import Subtotal from './Subtotal';
+import React from "react";
+import { useStateValue } from "./StateProvider.js";
+import CheckoutProduct from "./CheckoutProduct.js";
+import Subtotal from "./Subtotal";
 
 function Checkout() {
   const [{ basket, user }, dispatch] = useStateValue();
-  console.log('MY BASKET:', basket);
-  console.log('MY USER:', user);
+  console.log("MY BASKET:", basket);
+  console.log("MY USER:", user);
   return (
     <div className="checkout">
       <div className="checkout__left">

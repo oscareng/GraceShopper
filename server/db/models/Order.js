@@ -9,6 +9,7 @@ const Order = db.define("Order", {
     defaultValue: 1,
   },
   totalprice: { type: Sequelize.INTEGER },
+  state: { type: Sequelize.ENUM("incomplete", "complete") },
 });
 
 module.exports = Order;

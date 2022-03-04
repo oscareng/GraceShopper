@@ -9,6 +9,7 @@ const LineItem = db.define("LineItem", {
   saleprice: { type: Sequelize.INTEGER, allowNull: false, defaultValue: 20 },
   size: { type: Sequelize.STRING, allowNull: false, defaultValue: "Medium" },
   quantity: { type: Sequelize.INTEGER, allowNull: false, defaultValue: 1 },
+  imageUrl: { type: Sequelize.STRING, defaultValue: "png" },
 });
 
 module.exports = LineItem;

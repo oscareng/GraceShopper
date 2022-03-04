@@ -1,16 +1,16 @@
-import React, { Component, Fragment } from 'react';
-import { connect } from 'react-redux';
-import { withRouter, Route, Switch, Redirect } from 'react-router-dom';
-import { Login, Signup } from './components/AuthForm';
-import AllProducts from './components/AllProducts';
-import SingleProduct from './components/SingleProduct';
-import Confirmation from './components/Confirmation';
-import { LandingPage } from './components/LandingPage';
-import Home from './components/Home';
-import { me } from './store';
-import WomenProducts from './components/WomenProducts';
-import MenProducts from './components/MenProducts';
-import Checkout from './components/Checkout';
+import React, { Component, Fragment } from "react";
+import { connect } from "react-redux";
+import { withRouter, Route, Switch, Redirect } from "react-router-dom";
+import { Login, Signup } from "./components/AuthForm";
+import AllProducts from "./components/AllProducts";
+import SingleProduct from "./components/SingleProduct";
+import Confirmation from "./components/Confirmation";
+import { LandingPage } from "./components/LandingPage";
+import Home from "./components/Home";
+import { me } from "./store";
+import WomenProducts from "./components/WomenProducts";
+import MenProducts from "./components/MenProducts";
+import Checkout from "./components/Checkout";
 
 /**
  * COMPONENT
@@ -34,6 +34,9 @@ class Routes extends Component {
             <Route exact path="/products" component={AllProducts} />
             <Route exact path="/products/:id" component={SingleProduct} />
             {/* <Redirect to="/home" /> */}
+            <Route path="/checkout" component={Checkout} />
+            <Route exact path="/womens" component={WomenProducts} />
+            <Route exact path="/mens" component={MenProducts} />
           </Switch>
         ) : (
           <Switch>
