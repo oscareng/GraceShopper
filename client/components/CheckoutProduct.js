@@ -1,12 +1,8 @@
 import React from 'react';
 import { useStateValue } from './StateProvider';
 
-function CheckoutProduct({ name, imageUrl, price }) {
-  const [{ basket }, dispatch] = useStateValue();
-  console.log('My props:', basket);
-  console.log('My name:', name);
-  console.log('My image:', imageUrl);
-  console.log('My price:', price);
+function CheckoutProduct(props) {
+  const { name, imageUrl, price } = props;
   return (
     <div className="checkoutProduct">
       <img className="checkoutProduct__image" src={imageUrl} alt="" />

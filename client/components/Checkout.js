@@ -24,7 +24,6 @@ function Checkout() {
             <h3>Hello loyal customer! :D </h3>
             <h2 className="checkout__name">Your Shopping Basket</h2>
             {basket.map((item) => {
-              console.log('MY BASKET ITEMS:', item);
               return (
                 <CheckoutProduct
                   key={item.id}
