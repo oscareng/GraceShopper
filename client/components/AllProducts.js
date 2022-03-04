@@ -1,11 +1,12 @@
-import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { fetchProducts } from "../store/productsReducer";
-import { Link } from "react-router-dom";
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchProducts } from '../store/productsReducer';
+import { Link } from 'react-router-dom';
 
 const AllProducts = () => {
   //this grabs the robots from the redux store
   const products = useSelector((state) => state.products);
+  console.log('my Products:', products);
   //This gives up the dispatch function from redux
   const dispatch = useDispatch();
 
