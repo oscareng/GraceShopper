@@ -2,7 +2,7 @@ import React from 'react';
 import { useStateValue } from './StateProvider';
 
 function CheckoutProduct(props) {
-  const { name, imageUrl, price } = props;
+  const { name, imageUrl, saleprice } = props;
   return (
     <div className="checkoutProduct">
       <img className="checkoutProduct__image" src={imageUrl} alt="" />
@@ -11,7 +11,7 @@ function CheckoutProduct(props) {
         <p className="checkoutProduct__name">{name}</p>
         <p className="checkoutProduct__price">
           <small>$</small>
-          <strong>{price}</strong>
+          <strong>{saleprice}</strong>
         </p>
       </div>
     </div>

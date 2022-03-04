@@ -1,33 +1,19 @@
-export const initialState = {
-  basket: [
-    {
-      id: 1,
+import axios from 'axios';
 
-      name: 'Shirt1',
-      price: 20,
-      imageUrl:
-        'https://images.pexels.com/photos/10397680/pexels-photo-10397680.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
-    },
-    {
-      id: 2,
-      name: 'Shirt2',
-      price: 20,
-      imageUrl:
-        'https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260',
-
-  
-    },
-  ],
-  user: null,
-};
+export const initialState = [];
 
 //Action Types
+const GET_BASKET_ITEMS = 'GET_BASKET_ITEMS';
 const ADD_TO_BASKET = 'ADD_TO_BASKET';
 const REMOVE_FROM_BASKET = 'REMOVE_FROM_BASKET';
 const GET_BASKET_TOTAL = 'GET_BASKET_TOTAL';
 const SET_USER = 'SET_USER';
 
 //Action Creators
+const getBasketItems = (items) => ({
+  type: GET_BASKET_ITEMS,
+  items,
+});
 const addToBasket = (item) => ({
   type: ADD_TO_BASKET,
   item,
@@ -49,6 +35,16 @@ const setUser = (user) => ({
 });
 
 //Thunks
+export const fetchGetBasketItems = () => {
+  return async (dispatch) => {
+    try {
+      const { data: basketItems } = await axios.get(`/api/lineItem/`);
+      dispatch(getBasketItems(basketItems));
+    } catch (error) {
+      console.log('fetchAddToBasket thunk error', error);
+    }
+  };
+};
 export const fetchAddToBasket = (item) => {
   return async (dispatch) => {
     try {
@@ -96,7 +92,9 @@ export const fetchSetUser = (user) => {
 
 export default function cartreducer(state = initialState, action) {
   switch (action.type) {
-    case 'ADD_TO_BASKET':
+    case GET_BASKET_ITEMS:
+      return action.items;
+    case ADD_TO_BASKET:
       //Logic for adding item to basket
       return {
         ...state,
