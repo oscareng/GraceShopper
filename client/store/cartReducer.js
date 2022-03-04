@@ -89,6 +89,7 @@ export const fetchSetUser = (user) => {
   };
 };
 
+
 export default function cartreducer(state = initialState, action) {
   switch (action.type) {
     case GET_BASKET_ITEMS:
@@ -100,10 +101,12 @@ export default function cartreducer(state = initialState, action) {
         basket: [...state.basket, action.item],
       };
 
-    case REMOVE_FROM_BASKET: {
+    case 'REMOVE_FROM_BASKET':
       //Logic for removing item from basket
+
       //we clone the basket
       let newBasket = [...state.basket];
+
       //we check if the product exists
       const index = state.basket.findIndex(
         (basketItem) => basketItem.id === action.id
@@ -117,10 +120,7 @@ export default function cartreducer(state = initialState, action) {
         );
       }
       return { ...state, basket: newBasket };
-    }
-    case GET_BASKET_TOTAL:
-      return action.basket.reduce((amount, item) => item.price + amount, 0);
-    case SET_USER:
+    case 'SET_USER':
       return {
         ...state,
         user: action.user,
