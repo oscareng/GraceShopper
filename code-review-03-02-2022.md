@@ -19,7 +19,7 @@
 
 ## Orders
 
-- A cart is just an order that has not yet been completed. Carts/Orders should contain LineItems/OrderItems.
+- A cart is just an order that has not yet been completed. Carts/Orders should contain LineItems or OrderItems.
 - A LineItem shoudl contain the price, quantity and productID. There's a one to many relationship between Orders and LineItems. And a one to many relationship between LineItem and Products
 - The "State" of an order (new, complete, shipped, etc) should probably be an ENUM field on the order table.
 - A Cart is something that exists only in the frontend for the end-user. To get the current user's cart query for all the line items in their current order (state of `new`)
