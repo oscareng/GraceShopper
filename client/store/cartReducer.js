@@ -7,7 +7,7 @@ export const initialState = {
       name: 'Shirt1',
       price: 20,
       imageUrl:
-        'https://images.pexels.com/photos/8485725/pexels-photo-8485725.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260',
+        'https://images.pexels.com/photos/10397680/pexels-photo-10397680.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
     },
     {
       id: 2,
@@ -19,7 +19,6 @@ export const initialState = {
   ],
   user: null,
 };
-
 
 //Action Types
 const ADD_TO_BASKET = 'ADD_TO_BASKET';
@@ -70,7 +69,6 @@ export const fetchRemoveFromBasket = (id) => {
     }
   };
 };
-
 
 export const fetchGetBasketTotal = (basket) => {
   return async (dispatch) => {
