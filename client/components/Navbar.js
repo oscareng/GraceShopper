@@ -12,8 +12,8 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
         <div>
           {/* The navbar will show these links after you log in */}
           {/* <Link to="/home">Home</Link> */}
-          <Link to="/womens">Womens</Link>
-          <Link to="/mens">Mens</Link>
+          <Link to="/womens">Women</Link>
+          <Link to="/mens">Men</Link>
           <Link to="/products">GRACE NYC</Link>
           <Link to="/checkout">
             <AiOutlineShoppingCart id="logo" />
@@ -26,8 +26,8 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
         <div>
           {/* The navbar will show these links before you log in */}
           {/* <Link to="/home">Home</Link> */}
-          <Link to="/womens">Womens</Link>
-          <Link to="/mens">Mens</Link>
+          <Link to="/womens">Women</Link>
+          <Link to="/mens">Men</Link>
           <Link to="/products">GRACE NYC</Link>
           <Link to="/login">
             <GiOwl id="user-logo" />

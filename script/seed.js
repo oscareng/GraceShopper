@@ -13,40 +13,74 @@ const lineitems = [
 const orders = [{ totalprice: 1 }, { totalprice: 1 }, { totalprice: 1 }];
 const products = [
   {
-    name: "Shirt1",
-    imageUrl:
-      "https://images.pexels.com/photos/8485725/pexels-photo-8485725.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
+    name: "Light blue shirt",
+    description: "A nice piece of clothing!",
+    price: 50,
+    gender: "Male",
+    size: "Medium",
+    category: "Shirt",
+    stock: 1,
+    imageUrl: "Light_blue_shirt.jpeg",
   },
   {
-    name: "Shirt2",
-    imageUrl:
-      "https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
+    name: "Black blazer",
+    description:
+      "The latest trend, no matter who you are, where you’re from and what you’re up to",
+    price: 60,
+    gender: "Female",
+    size: "Medium",
+    category: "Blazer",
+    stock: 1,
+    imageUrl: "black_blazer.jpeg",
+  },
+  ,
+  {
+    name: "Black hat",
+    description:
+      "Hats are the excellent accessory that will complete any outfit",
+    price: 20,
+    gender: "Male",
+    size: "Medium",
+    category: "Shirt",
+    stock: 1,
+    imageUrl: "Black_hat.jpeg",
   },
   {
-    name: "Shirt3",
-    imageUrl:
-      "https://images.pexels.com/photos/8485725/pexels-photo-8485725.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
+    name: "Green sweater",
+    description: "Combine innovative design and vintage style",
+    price: 50,
+    gender: "Female",
+    size: "Small",
+    category: "Sweater",
+    stock: 1,
+    imageUrl: "Green_sweater.jpeg",
   },
   {
-    name: "Shirt4",
-    imageUrl:
-      "https://images.pexels.com/photos/8485725/pexels-photo-8485725.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
+    name: "Gray Sweatshirt",
+    description: "Innovative sportswear",
+    price: 60,
+    gender: "Male",
+    size: "Large",
+    category: "Sweatshirt",
+    stock: 1,
+    imageUrl: "Gray_jogging_cloth.jpeg",
   },
   {
-    name: "Shirt5",
-    imageUrl:
-      "https://images.pexels.com/photos/8485725/pexels-photo-8485725.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
-  },
-  {
-    name: "Shirt6",
-    imageUrl:
-      "https://images.pexels.com/photos/8485725/pexels-photo-8485725.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
+    name: "Brown cap",
+    description: "Keep warm",
+    price: 20,
+    gender: "Female",
+    size: "Small",
+    category: "Sweater",
+    stock: 1,
+    imageUrl: "Brown_cap.jpeg",
   },
 ];
 /**
  * seed - this function clears the database, updates tables to
  *      match the models, and populates the database.
  */
+//
 async function seed() {
   await db.sync({ force: true }); // clears db and matches models to tables
   console.log("db synced!");
@@ -62,7 +96,7 @@ async function seed() {
       return Product.create(product);
     })
   );
-
+  //
   const lineItemSeed = await Promise.all(
     lineitems.map((product) => {
       return LineItem.create(product);
