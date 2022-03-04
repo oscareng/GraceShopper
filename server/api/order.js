@@ -14,7 +14,7 @@ const requireToken = async (req, res, next) => {
   }
 };
 
-router.get("/user/:id", User.requireToken, async (req, res, next) => {
+router.get("/user/:id", async (req, res, next) => {
   try {
     const orders = await User.findByPk(req.params.id, {
       include: { model: Order },

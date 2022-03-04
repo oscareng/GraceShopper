@@ -1,31 +1,31 @@
-import axios from 'axios';
+import axios from "axios";
 
 export const initialState = {
   basket: [
     {
       id: 1,
-      name: 'Shirt1',
+      name: "Shirt1",
       price: 20,
       imageUrl:
-        'https://images.pexels.com/photos/8485725/pexels-photo-8485725.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260',
+        "https://images.pexels.com/photos/8485725/pexels-photo-8485725.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
     },
     {
       id: 2,
-      name: 'Shirt2',
+      name: "Shirt2",
       price: 20,
       imageUrl:
-        'https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260',
+        "https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
     },
   ],
   user: null,
 };
 
-
 //Action Types
-const ADD_TO_BASKET = 'ADD_TO_BASKET';
-const REMOVE_FROM_BASKET = 'REMOVE_FROM_BASKET';
-const GET_BASKET_TOTAL = 'GET_BASKET_TOTAL';
-const SET_USER = 'SET_USER';
+const ADD_TO_BASKET = "ADD_TO_BASKET";
+const REMOVE_FROM_BASKET = "REMOVE_FROM_BASKET";
+const GET_BASKET_TOTAL = "GET_BASKET_TOTAL";
+const SET_USER = "SET_USER";
+const GET_ORDERS = "GET_ORDERS";
 
 //Action Creators
 const addToBasket = (item) => ({
@@ -48,6 +48,10 @@ const setUser = (user) => ({
   user,
 });
 
+const getOrders = (order) => ({
+  type: GET_ORDERS,
+  order,
+});
 //Thunks
 export const fetchAddToBasket = (item) => {
   return async (dispatch) => {
@@ -55,7 +59,7 @@ export const fetchAddToBasket = (item) => {
       const { data: lineItem } = await axios.post(`/api/lineItem/`, item);
       dispatch(addToBasket(lineItem));
     } catch (error) {
-      console.log('fetchAddToBasket thunk error', error);
+      console.log("fetchAddToBasket thunk error", error);
     }
   };
 };
@@ -66,11 +70,10 @@ export const fetchRemoveFromBasket = (id) => {
       const { data: deleted } = await axios.delete(`/api/lineItem/${id}`);
       dispatch(removeFromBasket(deleted));
     } catch (error) {
-      console.log('fetchRemoveFromBasket thunk error', error);
+      console.log("fetchRemoveFromBasket thunk error", error);
     }
   };
 };
-
 
 export const fetchGetBasketTotal = (basket) => {
   return async (dispatch) => {
@@ -78,7 +81,7 @@ export const fetchGetBasketTotal = (basket) => {
       const { data: basket } = await axios.get(`/api/lineItem/`);
       dispatch(getBasketTotal(basket));
     } catch (error) {
-      console.log('fetchGetBasketTotal thunk error', error);
+      console.log("fetchGetBasketTotal thunk error", error);
     }
   };
 };
@@ -89,7 +92,25 @@ export const fetchSetUser = (user) => {
       const { data: myUser } = await axios.get(`/api/products/`);
       dispatch(setUser(myUser));
     } catch (error) {
-      console.log('fetchSetUser thunk error', error);
+      console.log("fetchSetUser thunk error", error);
+    }
+  };
+};
+
+export const fetchOrders = (id) => {
+  return async (dispatch) => {
+    try {
+      console.log(id);
+      //access token local storage
+      const token = window.localStorage.getItem("token");
+      const { data: myOrder } = await axios.get(`/api/order/user/${id}`, {
+        headers: {
+          authorization: token,
+        },
+      });
+      dispatch(getOrders(myOrder));
+    } catch (error) {
+      console.log("fetchGetOrders thunk error", error);
     }
   };
 };
@@ -127,6 +148,11 @@ export default function cartreducer(state = initialState, action) {
       return {
         ...state,
         user: action.user,
+      };
+    case GET_ORDERS:
+      return {
+        ...state,
+        orders: action.orders,
       };
     default:
       return state;

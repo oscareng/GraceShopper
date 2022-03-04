@@ -1,16 +1,17 @@
-import React from 'react';
-import { useStateValue } from './StateProvider.js';
-import CheckoutProduct from './CheckoutProduct.js';
-import Subtotal from './Subtotal';
-
+import React, { useEffect } from "react";
+import { useStateValue } from "./StateProvider.js";
+import CheckoutProduct from "./CheckoutProduct.js";
+import Subtotal from "./Subtotal";
+import { fetchOrders } from "../store/cartReducer";
+import { useParams } from "react-router";
 function Checkout() {
   const [{ basket, user }, dispatch] = useStateValue();
+  const { id } = useParams();
   //Example hook:
-  /*
-   useEffect(() => {
-    dispatch(fetchSingleProduct(id));
-  }, []);
-  */
+
+  // useEffect(() => {
+  //   dispatch(fetchOrders(id));
+  // }, []);
   return (
     <div className="checkout">
       <div className="checkout__left">
@@ -29,7 +30,6 @@ function Checkout() {
             <h3>Hello loyal customer! :D </h3>
             <h2 className="checkout__name">Your Shopping Basket</h2>
             {basket.map((item) => {
-              console.log(item);
               <CheckoutProduct
                 id={item.id}
                 name={item.name}
