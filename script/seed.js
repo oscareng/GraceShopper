@@ -78,10 +78,6 @@ async function seed() {
   await db.sync({ force: true });
   console.log('db synced!');
 
-  let randIndex = function (arr) {
-    return Math.floor(Math.random() * arr.length);
-  };
-
   // create users
   const users = [];
   for (let i = 0; i < 50; i++) {
@@ -104,7 +100,7 @@ async function seed() {
         size: faker.lorem.word(),
         category: faker.commerce.department(),
         stock: 999,
-        imageUrl: faker.image.city(640, 480, true),
+        imageUrl: faker.image.fashion(640, 480, true),
       })
     );
   }
