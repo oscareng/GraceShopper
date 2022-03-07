@@ -14,12 +14,16 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
           {/* <Link to="/home">Home</Link> */}
           <Link to="/womens">Women</Link>
           <Link to="/mens">Men</Link>
-          <Link to="/products">GRACE NYC</Link>
-          <Link to="/checkout">
-            <AiOutlineShoppingCart id="logo" />
+          <Link to="/">
+            GRACE
+            <GiOwl id="user-logo" />
+            NYC
           </Link>
           <Link to="#" onClick={handleClick}>
             Logout
+          </Link>
+          <Link to="/checkout">
+            <AiOutlineShoppingCart id="logo" />
           </Link>
         </div>
       ) : (

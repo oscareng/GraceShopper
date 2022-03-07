@@ -108,7 +108,6 @@ export const fetchIncreaseItemQuantity = (id) => {
   };
 };
 
-
 export default function cartreducer(state = initialState, action) {
   switch (action.type) {
     //Get multiple items in cart
@@ -138,6 +137,7 @@ export default function cartreducer(state = initialState, action) {
         );
       }
       return { ...state, basket: newBasket };
+    }
     case 'SET_USER':
       return {
         ...state,

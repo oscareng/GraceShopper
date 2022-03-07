@@ -35,7 +35,7 @@ function Checkout() {
                   key={item.id}
                   name={item.name}
                   saleprice={item.saleprice}
-                  imageUrl={item.imageUrl}
+                  imageUrl={`../images/${item.imageUrl}`}
                   quantity={item.quantity}
                   item={item}
                 />
