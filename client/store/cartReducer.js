@@ -8,6 +8,7 @@ const ADD_TO_BASKET = 'ADD_TO_BASKET';
 const REMOVE_FROM_BASKET = 'REMOVE_FROM_BASKET';
 const GET_BASKET_TOTAL = 'GET_BASKET_TOTAL';
 const SET_USER = 'SET_USER';
+const INCREASE_ITEM_QUANTITY = 'INCREASE_ITEM_QUANTITY';
 
 //Action Creators
 const getBasketItems = (items) => ({
@@ -34,6 +35,11 @@ const setUser = (user) => ({
   user,
 });
 
+const increaseItemQuantity = (item) => ({
+  type: INCREASE_ITEM_QUANTITY,
+  item,
+});
+
 //Thunks
 export const fetchGetBasketItems = () => {
   return async (dispatch) => {
@@ -41,7 +47,7 @@ export const fetchGetBasketItems = () => {
       const { data: basketItems } = await axios.get(`/api/lineItem/`);
       dispatch(getBasketItems(basketItems));
     } catch (error) {
-      console.log('fetchAddToBasket thunk error', error);
+      console.log('fetchGetBasketItems thunk error', error);
     }
   };
 };
@@ -90,18 +96,31 @@ export const fetchSetUser = (user) => {
 };
 
 
+export const fetchIncreaseItemQuantity = (id) => {
+  return async (dispatch) => {
+    try {
+      const { data: basketItem } = await axios.put(
+        `/api/lineItem/${id}/increase`
+      );
+      dispatch(increaseItemQuantity(basketItem));
+    } catch (error) {
+      console.log('fetchIncreaseItemQuantity thunk error', error);
+    }
+  };
+};
+
+
 export default function cartreducer(state = initialState, action) {
   switch (action.type) {
+    //Get multiple items in cart
     case GET_BASKET_ITEMS:
       return action.items;
+
     case ADD_TO_BASKET:
       //Logic for adding item to basket
-      return {
-        ...state,
-        basket: [...state.basket, action.item],
-      };
 
-    case 'REMOVE_FROM_BASKET':
+      return [...state, action.item];
+    case REMOVE_FROM_BASKET: {
       //Logic for removing item from basket
 
       //we clone the basket
@@ -125,6 +144,8 @@ export default function cartreducer(state = initialState, action) {
         ...state,
         user: action.user,
       };
+    case INCREASE_ITEM_QUANTITY:
+      return action.item;
     default:
       return state;
   }

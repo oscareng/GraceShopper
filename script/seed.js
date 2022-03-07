@@ -5,11 +5,8 @@ const {
   models: { User, Product, LineItem, Order },
 } = require('../server/db');
 
-const lineitems = [
-  { name: 'Shirt1', saleprice: 1 },
-  { name: 'Shirt1', saleprice: 1 },
-  { name: 'Shirt1', saleprice: 1 },
-];
+const lineitems = [];
+
 const orders = [{ totalprice: 1 }, { totalprice: 1 }, { totalprice: 1 }];
 const products = [
   {
