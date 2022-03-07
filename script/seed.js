@@ -1,79 +1,75 @@
-"use strict";
+'use strict';
 
 const {
   db,
   models: { User, Product, LineItem, Order },
-} = require("../server/db");
+} = require('../server/db');
 
-const lineitems = [
-  { name: "Shirt1", saleprice: 1 },
-  { name: "Shirt1", saleprice: 1 },
-  { name: "Shirt1", saleprice: 1 },
-];
+const lineitems = [];
 const orders = [{ totalprice: 1 }, { totalprice: 1 }, { totalprice: 1 }];
 const products = [
   {
-    name: "Light blue shirt",
-    description: "A nice piece of clothing!",
+    name: 'Light blue shirt',
+    description: 'A nice piece of clothing!',
     price: 50,
-    gender: "Male",
-    size: "Medium",
-    category: "Shirt",
+    gender: 'Male',
+    size: 'Medium',
+    category: 'Shirt',
     stock: 1,
-    imageUrl: "Light_blue_shirt.jpeg",
+    imageUrl: 'Light_blue_shirt.jpeg',
   },
   {
-    name: "Black blazer",
+    name: 'Black blazer',
     description:
-      "The latest trend, no matter who you are, where you’re from and what you’re up to",
+      'The latest trend, no matter who you are, where you’re from and what you’re up to',
     price: 60,
-    gender: "Female",
-    size: "Medium",
-    category: "Blazer",
+    gender: 'Female',
+    size: 'Medium',
+    category: 'Blazer',
     stock: 1,
-    imageUrl: "black_blazer.jpeg",
+    imageUrl: 'black_blazer.jpeg',
   },
   ,
   {
-    name: "Black hat",
+    name: 'Black hat',
     description:
-      "Hats are the excellent accessory that will complete any outfit",
+      'Hats are the excellent accessory that will complete any outfit',
     price: 20,
-    gender: "Male",
-    size: "Medium",
-    category: "Shirt",
+    gender: 'Male',
+    size: 'Medium',
+    category: 'Shirt',
     stock: 1,
-    imageUrl: "Black_hat.jpeg",
+    imageUrl: 'Black_hat.jpeg',
   },
   {
-    name: "Green sweater",
-    description: "Combine innovative design and vintage style",
+    name: 'Green sweater',
+    description: 'Combine innovative design and vintage style',
     price: 50,
-    gender: "Female",
-    size: "Small",
-    category: "Sweater",
+    gender: 'Female',
+    size: 'Small',
+    category: 'Sweater',
     stock: 1,
-    imageUrl: "Green_sweater.jpeg",
+    imageUrl: 'Green_sweater.jpeg',
   },
   {
-    name: "Gray Sweatshirt",
-    description: "Innovative sportswear",
+    name: 'Gray Sweatshirt',
+    description: 'Innovative sportswear',
     price: 60,
-    gender: "Male",
-    size: "Large",
-    category: "Sweatshirt",
+    gender: 'Male',
+    size: 'Large',
+    category: 'Sweatshirt',
     stock: 1,
-    imageUrl: "Gray_jogging_cloth.jpeg",
+    imageUrl: 'Gray_jogging_cloth.jpeg',
   },
   {
-    name: "Brown cap",
-    description: "Keep warm",
+    name: 'Brown cap',
+    description: 'Keep warm',
     price: 20,
-    gender: "Female",
-    size: "Small",
-    category: "Sweater",
+    gender: 'Female',
+    size: 'Small',
+    category: 'Sweater',
     stock: 1,
-    imageUrl: "Brown_cap.jpeg",
+    imageUrl: 'Brown_cap.jpeg',
   },
 ];
 /**
@@ -83,13 +79,13 @@ const products = [
 //
 async function seed() {
   await db.sync({ force: true }); // clears db and matches models to tables
-  console.log("db synced!");
+  console.log('db synced!');
 
   // Creating Users
   const users = await Promise.all([
-    User.create({ username: "cody", password: "123" }),
-    User.create({ username: "murphy", password: "123" }),
-    User.create({ username: "john", password: "123" }),
+    User.create({ username: 'cody', password: '123' }),
+    User.create({ username: 'murphy', password: '123' }),
+    User.create({ username: 'john', password: '123' }),
   ]);
   const productSeed = await Promise.all(
     products.map((product) => {
@@ -110,10 +106,10 @@ async function seed() {
   );
 
   //Find cody and Shirt1 and associate them
-  const cody = await User.findOne({ where: { username: "cody" } });
-  const shirt = await Product.findOne({ where: { name: "Shirt1" } });
+  const cody = await User.findOne({ where: { username: 'cody' } });
+  const shirt = await Product.findOne({ where: { name: 'Shirt1' } });
   const order = await Order.findOne({ where: { ordernumber: 1 } });
-  const lineitem = await LineItem.findOne({ where: { name: "Shirt1" } });
+  const lineitem = await LineItem.findOne({ where: { name: 'Shirt1' } });
   await cody.addOrder(order);
   await order.addLineItem(lineitem);
   await lineitem.addProduct(shirt);
@@ -133,16 +129,16 @@ async function seed() {
  The `seed` function is concerned only with modifying the database.
 */
 async function runSeed() {
-  console.log("seeding...");
+  console.log('seeding...');
   try {
     await seed();
   } catch (err) {
     console.error(err);
     process.exitCode = 1;
   } finally {
-    console.log("closing db connection");
+    console.log('closing db connection');
     await db.close();
-    console.log("db connection closed");
+    console.log('db connection closed');
   }
 }
 

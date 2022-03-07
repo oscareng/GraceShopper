@@ -41,12 +41,25 @@ router.post('/:id', async (req, res, next) => {
   }
 });
 
-//DELETE /api/products/:id
+//DELETE /api/lineItem/:id
 router.delete('/:id', async (req, res, next) => {
   try {
     const lineItem = await LineItem.findByPk(req.params.id);
     await lineItem.destroy();
     res.json(lineItem);
+  } catch (error) {
+    next(error);
+  }
+});
+
+//PUT /api/lineItem/id
+router.put('/:id/increase', async (req, res, next) => {
+  try {
+    const lineItem = await LineItem.findByPk(req.params.id);
+    const newLineItem = await lineItem.update({
+      quantity: lineItem.quantity + 1,
+    });
+    res.send(newLineItem);
   } catch (error) {
     next(error);
   }
