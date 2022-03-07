@@ -53,9 +53,9 @@ router.delete('/:id', async (req, res, next) => {
 });
 
 //PUT /api/lineItem/id
-router.put('/increase', async (req, res, next) => {
+router.put('/:id/increase', async (req, res, next) => {
   try {
-    const lineItem = await LineItem.findByPk(req.body.id);
+    const lineItem = await LineItem.findByPk(req.params.id);
     const newLineItem = await lineItem.update({
       quantity: lineItem.quantity + 1,
     });
