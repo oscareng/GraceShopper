@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import {
   fetchIncreaseItemQuantity,
   fetchGetBasketItem,
+  fetchRemoveFromBasket,
 } from '../store/cartReducer';
 import { useParams } from 'react-router';
 
@@ -14,6 +15,10 @@ function CheckoutProduct(props) {
 
   function handleIncreaseButton() {
     dispatch(fetchIncreaseItemQuantity(id));
+  }
+
+  function handleRemoveButton(item) {
+    dispatch(fetchRemoveFromBasket(item.id));
   }
   console.log('checkoutProduct item:', item);
   return (
@@ -32,6 +37,7 @@ function CheckoutProduct(props) {
             +
           </button>
         </p>
+        <button onClick={() => handleRemoveButton(item)}>Remove</button>
         <p className="checkoutProduct__price">
           <small>$</small>
           <strong>{saleprice}</strong>

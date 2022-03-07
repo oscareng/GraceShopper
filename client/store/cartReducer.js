@@ -1,8 +1,8 @@
 import axios from 'axios';
+
 export const initialState = [];
 
 //Action Types
-
 const GET_BASKET_ITEMS = 'GET_BASKET_ITEMS';
 const ADD_TO_BASKET = 'ADD_TO_BASKET';
 const REMOVE_FROM_BASKET = 'REMOVE_FROM_BASKET';
@@ -15,7 +15,6 @@ const getBasketItems = (items) => ({
   type: GET_BASKET_ITEMS,
   items,
 });
-
 const addToBasket = (item) => ({
   type: ADD_TO_BASKET,
   item,
@@ -52,7 +51,6 @@ export const fetchGetBasketItems = () => {
     }
   };
 };
-
 export const fetchAddToBasket = (item) => {
   return async (dispatch) => {
     try {
@@ -68,6 +66,7 @@ export const fetchRemoveFromBasket = (id) => {
   return async (dispatch) => {
     try {
       const { data: deleted } = await axios.delete(`/api/lineItem/${id}`);
+      console.log('DELETED:', deleted);
       dispatch(removeFromBasket(deleted));
     } catch (error) {
       console.log('fetchRemoveFromBasket thunk error', error);
@@ -115,26 +114,15 @@ export default function cartreducer(state = initialState, action) {
     //Get multiple items in cart
     case GET_BASKET_ITEMS:
       return action.items;
+
     case ADD_TO_BASKET:
       //Logic for adding item to basket
+
       return [...state, action.item];
+
     case REMOVE_FROM_BASKET: {
-      //Logic for removing item from basket
-      //we clone the basket
-      let newBasket = [...state.basket];
-      //we check if the product exists
-      const index = state.basket.findIndex(
-        (basketItem) => basketItem.id === action.id
-      );
-      if (index >= 0) {
-        //item exists in basket, remove it...
-        newBasket.splice(index, 1);
-      } else {
-        console.warn(
-          `Can't remove product (id: ${action.id}) as its not in basket`
-        );
-      }
-      return { ...state, basket: newBasket };
+      state.pop();
+      return [...state];
     }
     case 'SET_USER':
       return {

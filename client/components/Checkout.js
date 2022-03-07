@@ -4,6 +4,7 @@ import { useStateValue } from './StateProvider.js';
 import CheckoutProduct from './CheckoutProduct.js';
 import Subtotal from './Subtotal';
 import { fetchGetBasketItems } from '../store/cartReducer.js';
+import Home from './Home.js';
 
 function Checkout() {
   const cartItems = useSelector((state) => state.cartReducer);
