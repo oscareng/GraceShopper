@@ -6,6 +6,7 @@ const {
 } = require('../server/db');
 
 const lineitems = [];
+
 const orders = [{ totalprice: 1 }, { totalprice: 1 }, { totalprice: 1 }];
 const products = [
   {
