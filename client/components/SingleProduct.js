@@ -13,13 +13,18 @@ const SingleProduct = () => {
   useEffect(() => {
     dispatch(fetchSingleProduct(id));
   }, []);
+  console.log('PRODUCT', product);
 
   function handleAdd(product) {
     dispatch(fetchAddToBasket(product));
   }
   return (
     <div className="single_product" key={product.id}>
-      <img src={product.imageUrl} />
+      <img
+        className="all_products__image"
+        src={`../images/${product.imageUrl}`}
+        style={{ width: '600px', height: '400px' }}
+      />
       <h1 className="single_products__name">{product.name}</h1>
       <h2>Size: {product.size}</h2>
       <h2>Price: ${product.price}.00</h2>
@@ -29,7 +34,7 @@ const SingleProduct = () => {
         onClick={() => handleAdd(product)}
         type="button"
       >
-        Add to Cart!
+        Add to Cart
       </button>
     </div>
   );

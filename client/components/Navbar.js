@@ -1,9 +1,9 @@
-import React from "react";
-import { connect } from "react-redux";
-import { Link } from "react-router-dom";
-import { AiOutlineShoppingCart } from "react-icons/ai";
-import { GiOwl } from "react-icons/gi";
-import { logout } from "../store";
+import React from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { AiOutlineShoppingCart } from 'react-icons/ai';
+import { GiOwl } from 'react-icons/gi';
+import { logout } from '../store';
 
 const Navbar = ({ handleClick, isLoggedIn }) => (
   <div>
@@ -28,7 +28,7 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
           {/* <Link to="/home">Home</Link> */}
           <Link to="/womens">Women</Link>
           <Link to="/mens">Men</Link>
-          <Link to="/products">GRACE NYC</Link>
+          <Link to="/">GRACE NYC</Link>
           <Link to="/login">
             <GiOwl id="user-logo" />
           </Link>

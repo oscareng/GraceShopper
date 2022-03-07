@@ -74,6 +74,21 @@ const { transformIncludesAndExcludes } = require('@babel/preset-env');
 //   },
 // ];
 
+let mensImagePool = [
+  'pexels-mostafa-sannad-878358.jpg',
+  'Gray_jogging_cloth.jpeg',
+  'pexels-the-lazy-artist-gallery-1342609.jpg',
+  'Black_hat.jpeg',
+];
+
+let randIndex = function (arr) {
+  return Math.floor(Math.random() * arr.length);
+};
+
+function mensImages() {
+  return mensImagePool[randIndex(mensImagePool)];
+}
+
 async function seed() {
   await db.sync({ force: true });
   console.log('db synced!');
@@ -100,7 +115,7 @@ async function seed() {
         size: faker.lorem.word(),
         category: faker.commerce.department(),
         stock: 999,
-        imageUrl: faker.image.fashion(640, 480, true),
+        imageUrl: mensImages(),
       })
     );
   }
