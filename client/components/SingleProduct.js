@@ -10,7 +10,6 @@ const SingleProduct = () => {
   console.log("My product:", product);
   const dispatch = useDispatch();
   const { id } = useParams();
-
   useEffect(() => {
     dispatch(fetchSingleProduct(id));
   }, []);

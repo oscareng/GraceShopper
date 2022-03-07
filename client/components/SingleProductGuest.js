@@ -7,7 +7,7 @@ import { addToBasket } from "../store/cartReducer";
 
 const SingleProduct = () => {
   const product = useSelector((state) => state.product);
-  console.log("My product:", product);
+  //console.log("My product:", product);
   const dispatch = useDispatch();
   const { id } = useParams();
 

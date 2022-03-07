@@ -71,6 +71,28 @@ export const fetchAddToBasket = (item) => {
   return async (dispatch) => {
     try {
       const token = window.localStorage.getItem("token");
+      // const { data: alreadyInBasket } = await axios.get(
+      //   `/api/lineItem/${item.id}`,
+      //   {
+      //     headers: {
+      //       authorization: token,
+      //     },
+      //   }
+      // );
+      // if (alreadyInBasket.id === item.id) {
+      //   alreadyInBasket[id];
+      //   const update = await axios.put(
+      //     `/api/lineitem/`,
+      //     {
+      //       quantity: item.quantity + 1,
+      //     },
+      //     {
+      //       headers: {
+      //         authorization: token,
+      //       },
+      //     }
+      //   );
+      // } else {
       const { data: lineItem } = await axios.post(`/api/lineItem/`, item, {
         headers: {
           authorization: token,

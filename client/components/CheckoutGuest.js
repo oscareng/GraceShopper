@@ -28,7 +28,7 @@ function Checkout() {
         ) : (
           <div>
             <h3>Hello loyal customer! :D </h3>
-            {console.log("MY ITEM:", cartItems)}
+            {/* {console.log("MY ITEM:", cartItems)} */}
             <h2 className="checkout__name">Your Shopping Basket</h2>
             {cartItems.map((item) => {
               return (

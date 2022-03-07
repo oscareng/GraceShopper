@@ -16,7 +16,7 @@ router.get("/", requireToken, async (req, res, next) => {
 
 router.get("/:id", requireToken, async (req, res, next) => {
   try {
-    const product = await LineItem.findByPk(req.user.id);
+    const product = await LineItem.findByPk(req.params.id);
     res.send(product);
   } catch (error) {
     next(error);
