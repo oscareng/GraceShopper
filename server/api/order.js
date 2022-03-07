@@ -3,16 +3,6 @@ const { models } = require("../db");
 const User = require("../db/models/User");
 const { Order, LineItem } = models;
 const requireToken = require("../middleware");
-// const requireToken = async (req, res, next) => {
-//   try {
-//     const token = req.headers.authorization;
-//     const user = await User.findByToken(token);
-//     req.user = user;
-//     next();
-//   } catch (error) {
-//     next(error);
-//   }
-// };
 
 router.get("/", requireToken, async (req, res, next) => {
   try {

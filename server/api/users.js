@@ -4,6 +4,8 @@ const {
 } = require("../db");
 module.exports = router;
 
+//require admin token
+
 router.get("/", async (req, res, next) => {
   try {
     const users = await User.findAll({

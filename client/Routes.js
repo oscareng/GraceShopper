@@ -11,7 +11,8 @@ import { me } from "./store";
 import WomenProducts from "./components/WomenProducts";
 import MenProducts from "./components/MenProducts";
 import Checkout from "./components/Checkout";
-
+import SingleProductGuest from "./components/SingleProductGuest";
+import CheckoutGuest from "./components/CheckoutGuest";
 /**
  * COMPONENT
  */
@@ -44,8 +45,8 @@ class Routes extends Component {
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
             <Route exact path="/products" component={AllProducts} />
-            <Route exact path="/products/:id" component={SingleProduct} />
-            <Route path="/checkout" component={Checkout} />
+            <Route exact path="/products/:id" component={SingleProductGuest} />
+            <Route path="/checkout" component={CheckoutGuest} />
             <Route path="/confirmation" component={Confirmation} />
             <Route exact path="/womens" component={WomenProducts} />
             <Route exact path="/mens" component={MenProducts} />

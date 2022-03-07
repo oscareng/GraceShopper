@@ -14,7 +14,7 @@ const getBasketItems = (items) => ({
   type: GET_BASKET_ITEMS,
   items,
 });
-const addToBasket = (item) => ({
+export const addToBasket = (item) => ({
   type: ADD_TO_BASKET,
   item,
 });
@@ -33,25 +33,49 @@ const setUser = (user) => ({
   type: SET_USER,
   user,
 });
-// const getOrders = (order) => ({
-//   type: GET_ORDERS,
-//   order,
-// });
+
+export const fetchGetGuestBasketItems = () => {
+  return async (dispatch) => {
+    try {
+      const localItems = window.localStorage;
+      let items = [];
+      for (const property in localItems) {
+        if (property.slice(0, 7) === "Product") {
+          const product = JSON.parse(localItems[property]);
+          items.push(product);
+        }
+      }
+      dispatch(getBasketItems(items));
+    } catch (error) {
+      console.log("fetchGetGuestBasketItems thunk error", error);
+    }
+  };
+};
 //Thunks
 export const fetchGetBasketItems = () => {
   return async (dispatch) => {
     try {
-      const { data: basketItems } = await axios.get(`/api/lineItem/`);
+      const token = window.localStorage.getItem("token");
+      const { data: basketItems } = await axios.get(`/api/lineItem/`, {
+        headers: {
+          authorization: token,
+        },
+      });
       dispatch(getBasketItems(basketItems));
     } catch (error) {
-      console.log("fetchAddToBasket thunk error", error);
+      console.log("fetchGetBasketItems thunk error", error);
     }
   };
 };
 export const fetchAddToBasket = (item) => {
   return async (dispatch) => {
     try {
-      const { data: lineItem } = await axios.post(`/api/lineItem/`, item);
+      const token = window.localStorage.getItem("token");
+      const { data: lineItem } = await axios.post(`/api/lineItem/`, item, {
+        headers: {
+          authorization: token,
+        },
+      });
       dispatch(addToBasket(lineItem));
     } catch (error) {
       console.log("fetchAddToBasket thunk error", error);
@@ -62,7 +86,12 @@ export const fetchAddToBasket = (item) => {
 export const fetchRemoveFromBasket = (id) => {
   return async (dispatch) => {
     try {
-      const { data: deleted } = await axios.delete(`/api/lineItem/${id}`);
+      const token = window.localStorage.getItem("token");
+      const { data: deleted } = await axios.delete(`/api/lineItem/${id}`, {
+        headers: {
+          authorization: token,
+        },
+      });
       dispatch(removeFromBasket(deleted));
     } catch (error) {
       console.log("fetchRemoveFromBasket thunk error", error);
@@ -70,27 +99,27 @@ export const fetchRemoveFromBasket = (id) => {
   };
 };
 
-export const fetchGetBasketTotal = (basket) => {
-  return async (dispatch) => {
-    try {
-      const { data: basket } = await axios.get(`/api/lineItem/`);
-      dispatch(getBasketTotal(basket));
-    } catch (error) {
-      console.log("fetchGetBasketTotal thunk error", error);
-    }
-  };
-};
+// export const fetchGetBasketTotal = (basket) => {
+//   return async (dispatch) => {
+//     try {
+//       const { data: basket } = await axios.get(`/api/lineItem/`);
+//       dispatch(getBasketTotal(basket));
+//     } catch (error) {
+//       console.log("fetchGetBasketTotal thunk error", error);
+//     }
+//   };
+// };
 
-export const fetchSetUser = (user) => {
-  return async (dispatch) => {
-    try {
-      const { data: myUser } = await axios.get(`/api/products/`);
-      dispatch(setUser(myUser));
-    } catch (error) {
-      console.log("fetchSetUser thunk error", error);
-    }
-  };
-};
+// export const fetchSetUser = (user) => {
+//   return async (dispatch) => {
+//     try {
+//       const { data: myUser } = await axios.get(`/api/products/`);
+//       dispatch(setUser(myUser));
+//     } catch (error) {
+//       console.log("fetchSetUser thunk error", error);
+//     }
+//   };
+// };
 // export const fetchOrders = (id) => {
 //   return async (dispatch) => {
 //     try {
@@ -114,10 +143,7 @@ export default function cartreducer(state = initialState, action) {
       return action.items;
     case ADD_TO_BASKET:
       //Logic for adding item to basket
-      return {
-        ...state,
-        basket: [...state.basket, action.item],
-      };
+      return [...state, action.item];
 
     case "REMOVE_FROM_BASKET":
       //Logic for removing item from basket

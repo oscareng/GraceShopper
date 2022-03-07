@@ -3,15 +3,15 @@ import { useSelector, useDispatch } from "react-redux";
 import { useStateValue } from "./StateProvider.js";
 import CheckoutProduct from "./CheckoutProduct.js";
 import Subtotal from "./Subtotal";
-import { fetchGetBasketItems } from "../store/cartReducer.js";
+import { fetchGetGuestBasketItems } from "../store/cartReducer.js";
 
 function Checkout() {
   const cartItems = useSelector((state) => state.cartReducer);
 
   const dispatch = useDispatch();
-  console.log(window.localStorage);
+
   useEffect(() => {
-    dispatch(fetchGetBasketItems());
+    dispatch(fetchGetGuestBasketItems());
   }, []);
   return (
     <div className="checkout">

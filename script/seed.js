@@ -97,11 +97,11 @@ async function seed() {
     })
   );
   //
-  const lineItemSeed = await Promise.all(
-    lineitems.map((product) => {
-      return LineItem.create(product);
-    })
-  );
+  // const lineItemSeed = await Promise.all(
+  //   lineitems.map((product) => {
+  //     return LineItem.create(product);
+  //   })
+  // );
 
   const OrderSeed = await Promise.all(
     orders.map((product) => {
@@ -117,10 +117,10 @@ async function seed() {
   const lineitem = await LineItem.findOne({ where: { name: "Shirt1" } });
   const lineitem2 = await LineItem.findOne({ where: { name: "Shirt1" } });
   await cody.addOrder(order);
-  await lineitem.addProduct(shirt);
-  await lineitem.addProduct(shirt2);
-  await order.addLineItem(lineitem);
-  await order.addLineItem(lineitem2);
+  // await lineitem.addProduct(shirt);
+  // await lineitem.addProduct(shirt2);
+  // await order.addLineItem(lineitem);
+  // await order.addLineItem(lineitem2);
   console.log(`seeded ${users.length} users`);
   console.log(`seeded successfully`);
   return {
