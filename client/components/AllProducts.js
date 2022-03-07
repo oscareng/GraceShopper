@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 const AllProducts = () => {
   //this grabs the robots from the redux store
   const products = useSelector((state) => state.products);
-  console.log('my Products:', products);
   //This gives up the dispatch function from redux
   const dispatch = useDispatch();
 

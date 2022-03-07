@@ -8,78 +8,13 @@ const {
 const { faker } = require('@faker-js/faker');
 const { transformIncludesAndExcludes } = require('@babel/preset-env');
 
-// const products = [
-//   {
-//     name: 'Light blue shirt',
-//     description: 'A nice piece of clothing!',
-//     price: 50,
-//     gender: 'Male',
-//     size: 'Medium',
-//     category: 'Shirt',
-//     stock: 1,
-//     imageUrl: 'Light_blue_shirt.jpeg',
-//   },
-//   {
-//     name: 'Black blazer',
-//     description:
-//       'The latest trend, no matter who you are, where you’re from and what you’re up to',
-//     price: 60,
-//     gender: 'Female',
-//     size: 'Medium',
-//     category: 'Blazer',
-//     stock: 1,
-//     imageUrl: 'black_blazer.jpeg',
-//   },
-//   ,
-//   {
-//     name: 'Black hat',
-//     description:
-//       'Hats are the excellent accessory that will complete any outfit',
-//     price: 20,
-//     gender: 'Male',
-//     size: 'Medium',
-//     category: 'Shirt',
-//     stock: 1,
-//     imageUrl: 'Black_hat.jpeg',
-//   },
-//   {
-//     name: 'Green sweater',
-//     description: 'Combine innovative design and vintage style',
-//     price: 50,
-//     gender: 'Female',
-//     size: 'Small',
-//     category: 'Sweater',
-//     stock: 1,
-//     imageUrl: 'Green_sweater.jpeg',
-//   },
-//   {
-//     name: 'Gray Sweatshirt',
-//     description: 'Innovative sportswear',
-//     price: 60,
-//     gender: 'Male',
-//     size: 'Large',
-//     category: 'Sweatshirt',
-//     stock: 1,
-//     imageUrl: 'Gray_jogging_cloth.jpeg',
-//   },
-//   {
-//     name: 'Brown cap',
-//     description: 'Keep warm',
-//     price: 20,
-//     gender: 'Female',
-//     size: 'Small',
-//     category: 'Sweater',
-//     stock: 1,
-//     imageUrl: 'Brown_cap.jpeg',
-//   },
-// ];
-
 let mensImagePool = [
   'pexels-mostafa-sannad-878358.jpg',
   'Gray_jogging_cloth.jpeg',
   'pexels-the-lazy-artist-gallery-1342609.jpg',
   'Black_hat.jpeg',
-];
+  ];
+const lineitems = [];
 
 let randIndex = function (arr) {
   return Math.floor(Math.random() * arr.length);
