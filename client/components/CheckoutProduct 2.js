@@ -5,13 +5,15 @@ import {
   fetchIncreaseItemQuantity,
   fetchGetBasketItem,
 } from '../store/cartReducer';
+import { useParams } from 'react-router';
 
 function CheckoutProduct(props) {
   const { name, imageUrl, saleprice, quantity, item } = props;
   const dispatch = useDispatch();
+  const { id } = useParams();
 
-  function handleIncreaseButton(item) {
-    dispatch(fetchIncreaseItemQuantity(item));
+  function handleIncreaseButton() {
+    dispatch(fetchIncreaseItemQuantity(id));
   }
   console.log('checkoutProduct item:', item);
   return (
@@ -24,7 +26,7 @@ function CheckoutProduct(props) {
           Quantity: {quantity}
           <button
             className="checkoutProduct__name"
-            onClick={() => handleIncreaseButton(item)}
+            onClick={() => handleIncreaseButton()}
             type="button"
           >
             +
