@@ -28,10 +28,12 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
           {/* <Link to="/home">Home</Link> */}
           <Link to="/womens">Women</Link>
           <Link to="/mens">Men</Link>
-          <Link to="/">GRACE NYC</Link>
-          <Link to="/login">
+          <Link to="/">
+            GRACE
             <GiOwl id="user-logo" />
+            NYC
           </Link>
+          <Link to="/login">Login</Link>
           <Link to="/checkout">
             <AiOutlineShoppingCart id="logo" />
           </Link>
