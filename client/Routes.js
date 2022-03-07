@@ -25,29 +25,16 @@ class Routes extends Component {
 
     return (
       <div>
-        {isLoggedIn ? (
-          <Switch>
-            <Route path="/" exact component={LandingPage} />
-            <Route path="/home" component={Home} />
-            <Route path="/login" component={Login} />
-            <Route path="/signup" component={Signup} />
-            <Route exact path="/products" component={AllProducts} />
-            <Route exact path="/products/:id" component={SingleProduct} />
-            {/* <Redirect to="/home" /> */}
-          </Switch>
-        ) : (
-          <Switch>
-            <Route path="/" exact component={LandingPage} />
-            <Route path="/login" component={Login} />
-            <Route path="/signup" component={Signup} />
-            <Route exact path="/products" component={AllProducts} />
-            <Route exact path="/products/:id" component={SingleProduct} />
-            <Route path="/checkout" component={Checkout} />
-            <Route path="/confirmation" component={Confirmation} />
-            <Route exact path="/womens" component={WomenProducts} />
-            <Route exact path="/mens" component={MenProducts} />
-          </Switch>
-        )}
+        <Route path="/" exact component={LandingPage} />
+        <Route path="/home" component={Home} />
+        <Route path="/login" component={Login} />
+        <Route path="/signup" component={Signup} />
+        <Route exact path="/products" component={AllProducts} />
+        <Route exact path="/products/:id" component={SingleProduct} />
+        <Route path="/checkout" component={Checkout} />
+        <Route path="/confirmation" component={Confirmation} />
+        <Route exact path="/womens" component={WomenProducts} />
+        <Route exact path="/mens" component={MenProducts} />
       </div>
     );
   }

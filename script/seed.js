@@ -13,7 +13,7 @@ let mensImagePool = [
   'Gray_jogging_cloth.jpeg',
   'pexels-the-lazy-artist-gallery-1342609.jpg',
   'Black_hat.jpeg',
-  ];
+];
 const lineitems = [];
 
 let randIndex = function (arr) {
@@ -54,29 +54,29 @@ async function seed() {
       })
     );
   }
-  //create Line Items
-  const lineitems = [];
-  for (let i = 0; i < 50; i++) {
-    lineitems.push(
-      await LineItem.create({
-        name: faker.lorem.sentence(),
-        price: faker.commerce.price(20, 99, 0),
-        size: faker.lorem.word(),
-        quantity: 9,
-      })
-    );
-  }
+  // //create Line Items
+  // const lineitems = [];
+  // for (let i = 0; i < 50; i++) {
+  //   lineitems.push(
+  //     await LineItem.create({
+  //       name: faker.lorem.sentence(),
+  //       price: faker.commerce.price(20, 99, 0),
+  //       size: faker.lorem.word(),
+  //       quantity: 9,
+  //     })
+  //   );
+  // }
 
-  //create Orders
-  const orders = [];
-  for (let i = 0; i < 50; i++) {
-    orders.push(
-      await Order.create({
-        ordernumber: 1, // may need to check with team about this
-        totalprice: faker.commerce.price(20, 99, 0),
-      })
-    );
-  }
+  // //create Orders
+  // const orders = [];
+  // for (let i = 0; i < 50; i++) {
+  //   orders.push(
+  //     await Order.create({
+  //       ordernumber: 1, // may need to check with team about this
+  //       totalprice: faker.commerce.price(20, 99, 0),
+  //     })
+  //   );
+  // }
 }
 
 /**
