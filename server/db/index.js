@@ -10,8 +10,10 @@ User.hasMany(Order);
 Order.belongsTo(User);
 Order.belongsToMany(LineItem, { through: "Order_Items" });
 LineItem.belongsToMany(Order, { through: "Order_Items" });
-LineItem.hasMany(Product);
-Product.belongsTo(LineItem);
+//belongs to
+LineItem.belongsTo(Product);
+//has many
+Product.hasMany(LineItem);
 
 module.exports = {
   db,

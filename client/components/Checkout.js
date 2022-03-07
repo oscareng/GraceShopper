@@ -4,14 +4,12 @@ import { useStateValue } from "./StateProvider.js";
 import CheckoutProduct from "./CheckoutProduct.js";
 import Subtotal from "./Subtotal";
 import { fetchGetBasketItems } from "../store/cartReducer.js";
-
+import useCart from "../hooks/useCart";
 function Checkout() {
-  const cartItems = useSelector((state) => state.cartReducer);
+  const { cartItems, getCart } = useCart();
 
-  const dispatch = useDispatch();
-  console.log(window.localStorage);
   useEffect(() => {
-    dispatch(fetchGetBasketItems());
+    getCart();
   }, []);
   return (
     <div className="checkout">

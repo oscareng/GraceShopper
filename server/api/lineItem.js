@@ -13,7 +13,7 @@ router.get("/", requireToken, async (req, res, next) => {
     next(error);
   }
 });
-
+//where user ^^^
 router.get("/:id", requireToken, async (req, res, next) => {
   try {
     const product = await LineItem.findByPk(req.params.id);

@@ -10,7 +10,7 @@ const GET_BASKET_TOTAL = "GET_BASKET_TOTAL";
 const SET_USER = "SET_USER";
 
 //Action Creators
-const getBasketItems = (items) => ({
+export const getBasketItems = (items) => ({
   type: GET_BASKET_ITEMS,
   items,
 });

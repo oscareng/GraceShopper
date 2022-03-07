@@ -8,7 +8,6 @@ const Order = db.define("Order", {
     validate: { notEmpty: true },
     defaultValue: 1,
   },
-  totalprice: { type: Sequelize.INTEGER },
   state: { type: Sequelize.ENUM("incomplete", "complete") },
 });
 
