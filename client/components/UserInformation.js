@@ -3,9 +3,15 @@ import { useSelector, useDispatch } from "react-redux";
 import { fetchUsers } from "../store/userInformationReducer";
 import useAuth from "../hooks/useAuth";
 
-function UserInformation({ users }) {
+const UserInformation = () => {
+  const users = useSelector((state) => state.userInformationReducer);
+  const dispatch = useDispatch();
   const { user } = useAuth();
   const { isAdmin } = user;
+
+  useEffect(() => {
+    dispatch(fetchUsers());
+  }, []);
 
   if (isAdmin) {
     return (
@@ -35,6 +41,6 @@ function UserInformation({ users }) {
   } else {
     return <h3>You are not an administrator</h3>;
   }
-}
+};
 
 export default UserInformation;
