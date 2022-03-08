@@ -45,7 +45,7 @@ const increaseItemQuantity = (item) => ({
 export const fetchGetBasketItems = () => {
   return async (dispatch) => {
     try {
-      const token = window.localStorage.getItem("token");
+      const token = window.localStorage.getItem('token');
       const { data: basketItems } = await axios.get(`/api/lineItem/`, {
         headers: {
           authorization: token,
@@ -61,29 +61,7 @@ export const fetchGetBasketItems = () => {
 export const fetchAddToBasket = (item) => {
   return async (dispatch) => {
     try {
-      const token = window.localStorage.getItem("token");
-      // const { data: alreadyInBasket } = await axios.get(
-      //   `/api/lineItem/${item.id}`,
-      //   {
-      //     headers: {
-      //       authorization: token,
-      //     },
-      //   }
-      // );
-      // if (alreadyInBasket.id === item.id) {
-      //   alreadyInBasket[id];
-      //   const update = await axios.put(
-      //     `/api/lineitem/`,
-      //     {
-      //       quantity: item.quantity + 1,
-      //     },
-      //     {
-      //       headers: {
-      //         authorization: token,
-      //       },
-      //     }
-      //   );
-      // } else {
+      const token = window.localStorage.getItem('token');
       const { data: lineItem } = await axios.post(`/api/lineItem/`, item, {
         headers: {
           authorization: token,
@@ -91,7 +69,7 @@ export const fetchAddToBasket = (item) => {
       });
       dispatch(addToBasket(lineItem));
     } catch (error) {
-      console.log("fetchAddToBasket thunk error", error);
+      console.log('fetchAddToBasket thunk error', error);
     }
   };
 };
@@ -99,7 +77,7 @@ export const fetchAddToBasket = (item) => {
 export const fetchRemoveFromBasket = (id) => {
   return async (dispatch) => {
     try {
-      const token = window.localStorage.getItem("token");
+      const token = window.localStorage.getItem('token');
       const { data: deleted } = await axios.delete(`/api/lineItem/${id}`, {
         headers: {
           authorization: token,
@@ -107,7 +85,7 @@ export const fetchRemoveFromBasket = (id) => {
       });
       dispatch(removeFromBasket(deleted));
     } catch (error) {
-      console.log("fetchRemoveFromBasket thunk error", error);
+      console.log('fetchRemoveFromBasket thunk error', error);
     }
   };
 };
