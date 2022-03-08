@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import {
   fetchIncreaseItemQuantity,
   fetchGetBasketItem,
+  fetchRemoveFromBasket,
 } from '../store/cartReducer';
 
 function CheckoutProduct(props) {
@@ -13,7 +14,11 @@ function CheckoutProduct(props) {
   function handleIncreaseButton(item) {
     dispatch(fetchIncreaseItemQuantity(item));
   }
-  console.log('checkoutProduct item:', item);
+
+  function handleRemoveButton() {
+    return dispatch(fetchRemoveFromBasket(item.id));
+  }
+
   return (
     <div className="checkoutProduct">
       <img className="checkoutProduct__image" src={imageUrl} alt="" />
@@ -30,6 +35,7 @@ function CheckoutProduct(props) {
             +
           </button>
         </p>
+        <button onClick={() => handleRemoveButton()}>Remove</button>
         <p className="checkoutProduct__price">
           <small>$</small>
           <strong>{saleprice}</strong>
