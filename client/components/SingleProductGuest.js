@@ -3,27 +3,27 @@ import { useSelector, useDispatch } from "react-redux";
 import { fetchSingleProduct } from "../store/singleProductReducer";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router";
-import { fetchAddToBasket } from "../store/cartReducer";
-import useCart from "../hooks/useCart";
-
+import { addToBasket } from "../store/cartReducer";
 
 const SingleProduct = () => {
   const product = useSelector((state) => state.product);
+  //console.log("My product:", product);
   const dispatch = useDispatch();
   const { id } = useParams();
 
-  const { addToCart } = useCart();
   useEffect(() => {
     dispatch(fetchSingleProduct(id));
   }, []);
-  console.log('PRODUCT', product);
 
+  function handleAdd(product) {
+    window.localStorage.setItem(`Product${id}`, JSON.stringify(product));
+    dispatch(addToBasket(product));
+  }
   return (
     <div className="single_product" key={product.id}>
       <img
-        className="all_products__image"
-        src={`../images/${product.imageUrl}`}
-        style={{ width: '600px', height: '400px' }}
+        src={`../${product.imageUrl}`}
+        style={{ width: "400px", height: "400px" }}
       />
       <h1 className="single_products__name">{product.name}</h1>
       <h2>Size: {product.size}</h2>
@@ -31,10 +31,10 @@ const SingleProduct = () => {
       <h2>Description: {product.description}</h2>
       <button
         className="single_products__button"
-        onClick={() => addToCart(product)}
+        onClick={() => handleAdd(product)}
         type="button"
       >
-        Add to Cart
+        Add to Cart!
       </button>
     </div>
   );

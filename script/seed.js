@@ -1,9 +1,10 @@
-'use strict';
+"use strict";
 
 const {
   db,
   models: { User, Product, LineItem, Order },
-} = require('../server/db');
+} = require("../server/db");
+
 
 const { faker } = require('@faker-js/faker');
 const { transformIncludesAndExcludes } = require('@babel/preset-env');
@@ -100,6 +101,7 @@ async function seed() {
 //     })
 //   );
 
+
 //   //Find cody and Shirt1 and associate them
 //   const cody = await User.findOne({ where: { username: 'cody' } });
 //   const shirt = await Product.findOne({ where: { name: 'Shirt1' } });
@@ -124,16 +126,16 @@ async function seed() {
  The `seed` function is concerned only with modifying the database.
 */
 async function runSeed() {
-  console.log('seeding...');
+  console.log("seeding...");
   try {
     await seed();
   } catch (err) {
     console.error(err);
     process.exitCode = 1;
   } finally {
-    console.log('closing db connection');
+    console.log("closing db connection");
     await db.close();
-    console.log('db connection closed');
+    console.log("db connection closed");
   }
 }
 

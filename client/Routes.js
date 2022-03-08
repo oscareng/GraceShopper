@@ -13,6 +13,8 @@ import MenProducts from "./components/MenProducts";
 import Checkout from "./components/Checkout";
 import Administrator from "./components/Administrator";
 import EditProduct from "./components/EditProduct";
+import SingleProductGuest from "./components/SingleProductGuest";
+import CheckoutGuest from "./components/CheckoutGuest";
 
 /**
  * COMPONENT
