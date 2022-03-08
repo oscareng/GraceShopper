@@ -1,8 +1,10 @@
 import React from 'react';
 import { useStateValue } from './StateProvider';
 import { useDispatch } from 'react-redux';
+import useCart from '../hooks/useCart';
 import Toastify from 'toastify-js';
 import { Button } from '@material-ui/core';
+
 import {
   fetchIncreaseItemQuantity,
   fetchGetBasketItem,
@@ -11,6 +13,7 @@ import {
 
 function CheckoutProduct(props) {
   const { name, imageUrl, saleprice, quantity, item } = props;
+  const { removeFromCart, increaseItemQuantity } = useCart();
   const dispatch = useDispatch();
 
   function handleIncreaseButton(item) {
@@ -41,20 +44,13 @@ function CheckoutProduct(props) {
           Quantity: {quantity}
           <button
             className="checkoutProduct__name"
-            onClick={() => handleIncreaseButton(item)}
+            onClick={() => increaseItemQuantity(item)}
             type="button"
           >
             +
           </button>
         </p>
-        <Button
-          size="small"
-          variant="contained"
-          style={{ backgroundColor: 'grey' }}
-          onClick={() => handleRemoveButton()}
-        >
-          Remove
-        </Button>
+        <button onClick={() => removeFromCart(item.id)}>Remove</button>
         <p className="checkoutProduct__price">
           <small>$</small>
           <strong>{saleprice}</strong>
