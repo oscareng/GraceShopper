@@ -2,6 +2,7 @@ import React from 'react';
 import { useStateValue } from './StateProvider';
 import { useDispatch } from 'react-redux';
 import Toastify from 'toastify-js';
+import { Button } from '@material-ui/core';
 import {
   fetchIncreaseItemQuantity,
   fetchGetBasketItem,
@@ -48,7 +49,14 @@ function CheckoutProduct(props) {
             +
           </button>
         </p>
-        <button onClick={() => handleRemoveButton()}>Remove</button>
+        <Button
+          size="small"
+          variant="contained"
+          style={{ backgroundColor: 'grey' }}
+          onClick={() => handleRemoveButton()}
+        >
+          Remove
+        </Button>
         <p className="checkoutProduct__price">
           <small>$</small>
           <strong>{saleprice}</strong>

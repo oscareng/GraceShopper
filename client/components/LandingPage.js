@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Typography, Box, Paper } from '@material-ui/core';
+import { Button, Typography, Box } from '@material-ui/core';
 import { ManSharpIcon } from '@material-ui/icons';
 
 import { Link } from 'react-router-dom';
@@ -19,7 +19,7 @@ export const LandingPage = () => {
           apologize than it is to get permission.” - Grace Hopper
         </Typography>
 
-        <Link to={'/womens'}>
+        <Link to={'/womens'} style={{ textDecoration: 'none' }}>
           <Button
             size="medium"
             variant="contained"
@@ -28,12 +28,12 @@ export const LandingPage = () => {
             WOMENS
           </Button>
         </Link>
-        <Link to={'/mens'}>
+        <Link to={'/mens'} style={{ textDecoration: 'none' }}>
           <Button size="medium" variant="contained" color="primary">
             MENS
           </Button>
         </Link>
-        <Link to={'/products'}>
+        <Link to={'/products'} style={{ textDecoration: 'none' }}>
           <Button
             size="medium"
             variant="contained"
