@@ -1,20 +1,20 @@
-import React from "react";
-import { createNewProduct } from "../store/administratorReducer";
-import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { createNewProduct } from '../store/administratorReducer';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 export class CreateNewProduct extends React.Component {
   constructor() {
     super();
     this.state = {
-      name: "",
-      price: "",
-      gender: "",
-      size: "",
-      description: "",
-      category: "",
-      stock: "",
-      imageUrl: "",
+      name: '',
+      price: '',
+      gender: '',
+      size: '',
+      description: '',
+      category: '',
+      stock: '',
+      imageUrl: '',
     };
 
     this.handleChange = this.handleChange.bind(this);
