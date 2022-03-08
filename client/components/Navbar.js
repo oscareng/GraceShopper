@@ -5,10 +5,31 @@ import { AiOutlineShoppingCart } from "react-icons/ai";
 import { GiOwl } from "react-icons/gi";
 import { logout } from "../store";
 
-const Navbar = ({ handleClick, isLoggedIn }) => (
-  <div>
-    <nav>
-      {isLoggedIn ? (
+const Navbar = ({ handleClick, isLoggedIn }) => {
+  if (isLoggedIn) {
+    if (isAdmin) {
+      return (
+        <div>
+          {/* The navbar will show these links after you log in */}
+          {/* <Link to="/home">Home</Link> */}
+          <Link to="/womens">Women</Link>
+          <Link to="/mens">Men</Link>
+          <Link to="/">
+            GRACE
+            <GiOwl id="user-logo" />
+            NYC
+          </Link>
+          <Link to="#" onClick={handleClick}>
+            Logout
+          </Link>
+          <Link to="/checkout">
+            <AiOutlineShoppingCart id="logo" />
+          </Link>
+          <Link>Admin</Link>
+        </div>
+      );
+    } else {
+      return (
         <div>
           {/* The navbar will show these links after you log in */}
           {/* <Link to="/home">Home</Link> */}
@@ -26,29 +47,30 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
             <AiOutlineShoppingCart id="logo" />
           </Link>
         </div>
-      ) : (
-        <div>
-          {/* The navbar will show these links before you log in */}
-          {/* <Link to="/home">Home</Link> */}
-          <Link to="/womens">Women</Link>
-          <Link to="/mens">Men</Link>
-          <Link to="/">
-            GRACE
-            <GiOwl id="user-logo" />
-            NYC
-          </Link>
-          <Link to="/login">Login</Link>
-          <Link to="/checkout">
-            <AiOutlineShoppingCart id="logo" />
-          </Link>
-          {/* <Link to="/login">Login</Link>
-          <Link to="/signup">Sign Up</Link> */}
-        </div>
-      )}
-    </nav>
-    <hr />
-  </div>
-);
+      );
+    }
+  } else {
+    return (
+      <div>
+        {/* The navbar will show these links before you log in */}
+        {/* <Link to="/home">Home</Link> */}
+        <Link to="/womens">Women</Link>
+        <Link to="/mens">Men</Link>
+        <Link to="/">
+          GRACE
+          <GiOwl id="user-logo" />
+          NYC
+        </Link>
+        <Link to="/login">Login</Link>
+        <Link to="/checkout">
+          <AiOutlineShoppingCart id="logo" />
+        </Link>
+        {/* <Link to="/login">Login</Link>
+    <Link to="/signup">Sign Up</Link> */}
+      </div>
+    );
+  }
+};
 
 /**
  * CONTAINER
