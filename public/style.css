@@ -82,11 +82,10 @@ nav > div {
   margin-top: 1px;
 }
 .all_products__button {
-  background: #f0c14b;
+  background: #000000;
   border: 1px solid;
   margin-top: 5px;
-  border-color: #a88734 #9c7e31 #846a29;
-  color: #111;
+  color: rgb(255, 255, 255);
 }
 /* Adding style in single_products */
 .single_products {

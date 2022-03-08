@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchSingleProduct } from '../store/singleProductReducer';
 import Toastify from 'toastify-js';
+import { Button } from '@material-ui/core';
 import { useParams } from 'react-router';
 import {
   fetchAddToBasket,
@@ -50,13 +51,19 @@ const SingleProduct = () => {
       <h2>Size: {product.size}</h2>
       <h2>Price: ${product.price}.00</h2>
       <h2>Description: {product.description}</h2>
-      <button
-        className="single_products__button"
-        onClick={() => addToCart(product)}
-        type="button"
+      <Button
+        onClick={() => handleAdd(product)}
+        size="medium"
+        variant="contained"
+        style={{ backgroundColor: 'grey' }}
+
+//       <button
+//         className="single_products__button"
+//         onClick={() => addToCart(product)}
+//         type="button"
       >
         Add to Cart
-      </button>
+      </Button>
     </div>
   );
 };
