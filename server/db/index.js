@@ -8,10 +8,12 @@ const LineItem = require("./models/LineItem");
 //associations could go here!
 User.hasMany(Order);
 Order.belongsTo(User);
-Order.hasMany(LineItem);
-LineItem.belongsTo(Order);
-LineItem.hasMany(Product);
-Product.belongsTo(LineItem);
+Order.belongsToMany(LineItem, { through: "Order_Items" });
+LineItem.belongsToMany(Order, { through: "Order_Items" });
+//belongs to
+LineItem.belongsTo(Product);
+//has many
+Product.hasMany(LineItem);
 
 module.exports = {
   db,

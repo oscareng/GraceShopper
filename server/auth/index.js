@@ -32,14 +32,3 @@ router.get("/me", async (req, res, next) => {
     next(ex);
   }
 });
-
-// router.get("/user/:id", User.requireToken, async (req, res, next) => {
-//   try {
-//     const orders = await User.findByPk(req.params.id, {
-//       include: { model: Order },
-//     });
-//     res.json(orders);
-//   } catch (error) {
-//     next(error);
-//   }
-// });

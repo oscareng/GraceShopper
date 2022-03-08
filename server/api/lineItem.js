@@ -1,11 +1,11 @@
-'use strict';
-
-const router = require('express').Router();
-const { models } = require('../db');
+"use strict";
+const requireToken = require("../middleware");
+const router = require("express").Router();
+const { models } = require("../db");
 const { LineItem } = models;
 
 //Get /api/lineItem
-router.get('/', async (req, res, next) => {
+router.get("/", requireToken, async (req, res, next) => {
   try {
     const products = await LineItem.findAll();
     res.json(products);
@@ -13,8 +13,8 @@ router.get('/', async (req, res, next) => {
     next(error);
   }
 });
-
-router.get('/:id', async (req, res, next) => {
+//where user ^^^
+router.get("/:id", requireToken, async (req, res, next) => {
   try {
     const product = await LineItem.findByPk(req.params.id);
     res.send(product);
@@ -24,7 +24,7 @@ router.get('/:id', async (req, res, next) => {
 });
 
 // POST /api/lineItem/
-router.post('/', async (req, res, next) => {
+router.post("/", requireToken, async (req, res, next) => {
   try {
     res.status(201).json(await LineItem.create(req.body));
   } catch (error) {
@@ -32,7 +32,7 @@ router.post('/', async (req, res, next) => {
   }
 });
 
-router.post('/:id', async (req, res, next) => {
+router.post("/:id", async (req, res, next) => {
   try {
     const product = await LineItem.findByPk(req.params.id);
     res.status(201).json(await LineItem.create(product));
@@ -40,6 +40,7 @@ router.post('/:id', async (req, res, next) => {
     next(error);
   }
 });
+
 
 //DELETE /api/lineItem/:id
 router.delete('/:id', async (req, res, next) => {
@@ -53,9 +54,9 @@ router.delete('/:id', async (req, res, next) => {
 });
 
 //PUT /api/lineItem/id
-router.put('/:id/increase', async (req, res, next) => {
+router.put('/increase', async (req, res, next) => {
   try {
-    const lineItem = await LineItem.findByPk(req.params.id);
+    const lineItem = await LineItem.findByPk(req.body.id);
     const newLineItem = await lineItem.update({
       quantity: lineItem.quantity + 1,
     });
