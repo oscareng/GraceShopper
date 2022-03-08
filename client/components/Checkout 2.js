@@ -1,15 +1,17 @@
-import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { useStateValue } from "./StateProvider.js";
-import CheckoutProduct from "./CheckoutProduct.js";
-import Subtotal from "./Subtotal";
-import { fetchGetBasketItems } from "../store/cartReducer.js";
-import useCart from "../hooks/useCart";
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { useStateValue } from './StateProvider.js';
+import CheckoutProduct from './CheckoutProduct.js';
+import Subtotal from './Subtotal';
+import { fetchGetBasketItems } from '../store/cartReducer.js';
+
 function Checkout() {
-  const { cartItems, getCart } = useCart();
+  const cartItems = useSelector((state) => state.cartReducer);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    getCart();
+    dispatch(fetchGetBasketItems());
   }, []);
   return (
     <div className="checkout">
@@ -33,7 +35,7 @@ function Checkout() {
                   key={item.id}
                   name={item.name}
                   saleprice={item.saleprice}
-                  imageUrl={`../images/${item.imageUrl}`}
+                  imageUrl={item.imageUrl}
                   quantity={item.quantity}
                   item={item}
                 />
