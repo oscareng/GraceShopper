@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchSingleProduct } from '../store/singleProductReducer';
@@ -9,15 +10,20 @@ import {
   fetchIncreaseItemQuantity,
 } from '../store/cartReducer';
 
+import useCart from "../hooks/useCart";
+
+
 const SingleProduct = () => {
   const product = useSelector((state) => state.product);
   const dispatch = useDispatch();
   const { id } = useParams();
 
+  const { addToCart } = useCart();
   useEffect(() => {
     dispatch(fetchSingleProduct(id));
   }, []);
   console.log('PRODUCT', product);
+
 
   function handleAdd(product) {
     dispatch(fetchAddToBasket(product));
@@ -46,7 +52,7 @@ const SingleProduct = () => {
       <h2>Description: {product.description}</h2>
       <button
         className="single_products__button"
-        onClick={() => handleAdd(product)}
+        onClick={() => addToCart(product)}
         type="button"
       >
         Add to Cart

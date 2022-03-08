@@ -3,13 +3,15 @@ import { useSelector, useDispatch } from "react-redux";
 import { useStateValue } from "./StateProvider.js";
 import CheckoutProduct from "./CheckoutProduct.js";
 import Subtotal from "./Subtotal";
-import { fetchGetBasketItems } from "../store/cartReducer.js";
-import useCart from "../hooks/useCart";
+import { fetchGetGuestBasketItems } from "../store/cartReducer.js";
+
 function Checkout() {
-  const { cartItems, getCart } = useCart();
+  const cartItems = useSelector((state) => state.cartReducer);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    getCart();
+    dispatch(fetchGetGuestBasketItems());
   }, []);
   return (
     <div className="checkout">
@@ -26,6 +28,7 @@ function Checkout() {
         ) : (
           <div>
             <h3>Hello loyal customer! :D </h3>
+            {/* {console.log("MY ITEM:", cartItems)} */}
             <h2 className="checkout__name">Your Shopping Basket</h2>
             {cartItems.map((item) => {
               return (
@@ -33,9 +36,7 @@ function Checkout() {
                   key={item.id}
                   name={item.name}
                   saleprice={item.saleprice}
-                  imageUrl={`../images/${item.imageUrl}`}
-                  quantity={item.quantity}
-                  item={item}
+                  imageUrl={item.imageUrl}
                 />
               );
             })}
