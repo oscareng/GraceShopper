@@ -7,7 +7,6 @@ import UserInformation from "../components/UserInformation";
 
 function Administrator() {
   const products = useSelector((state) => state.products);
-  const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -64,10 +63,8 @@ function Administrator() {
         </div>
 
         <h2> Users information</h2>
-        <UserInformation />
+        {/* <UserInformation /> */}
       </div>
-
-      {/* )} */}
     </div>
   );
 }
