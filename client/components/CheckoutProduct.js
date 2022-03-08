@@ -1,6 +1,7 @@
 import React from 'react';
 import { useStateValue } from './StateProvider';
 import { useDispatch } from 'react-redux';
+import useCart from '../hooks/useCart';
 import {
   fetchIncreaseItemQuantity,
   fetchGetBasketItem,
@@ -9,15 +10,7 @@ import {
 
 function CheckoutProduct(props) {
   const { name, imageUrl, saleprice, quantity, item } = props;
-  const dispatch = useDispatch();
-
-  function handleIncreaseButton(item) {
-    dispatch(fetchIncreaseItemQuantity(item));
-  }
-
-  function handleRemoveButton() {
-    return dispatch(fetchRemoveFromBasket(item.id));
-  }
+  const { removeFromCart, increaseItemQuantity } = useCart();
 
   return (
     <div className="checkoutProduct">
@@ -29,13 +22,13 @@ function CheckoutProduct(props) {
           Quantity: {quantity}
           <button
             className="checkoutProduct__name"
-            onClick={() => handleIncreaseButton(item)}
+            onClick={() => increaseItemQuantity(item)}
             type="button"
           >
             +
           </button>
         </p>
-        <button onClick={() => handleRemoveButton()}>Remove</button>
+        <button onClick={() => removeFromCart(item.id)}>Remove</button>
         <p className="checkoutProduct__price">
           <small>$</small>
           <strong>{saleprice}</strong>

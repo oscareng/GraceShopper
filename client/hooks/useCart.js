@@ -1,12 +1,14 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   fetchAddToBasket,
   fetchGetBasketItems,
   getBasketItems,
   addToBasket,
-} from "../store/cartReducer";
-import useAuth from "./useAuth.js";
+  fetchRemoveFromBasket,
+  fetchIncreaseItemQuantity,
+} from '../store/cartReducer';
+import useAuth from './useAuth.js';
 
 export default function useCart() {
   const { isLoggedIn } = useAuth();
@@ -14,7 +16,7 @@ export default function useCart() {
 
   const dispatch = useDispatch();
   useEffect(() => {
-    window.localStorage.setItem("cartItems", JSON.stringify(cartItems));
+    window.localStorage.setItem('cartItems', JSON.stringify(cartItems));
   }, [cartItems]);
 
   function addToCart(product) {
@@ -28,13 +30,22 @@ export default function useCart() {
     if (isLoggedIn) {
       dispatch(fetchGetBasketItems());
     } else {
-      const items = JSON.parse(window.localStorage.getItem("cartItems"));
+      const items = JSON.parse(window.localStorage.getItem('cartItems'));
       dispatch(getBasketItems(items));
     }
+  }
+  function increaseItemQuantity(item) {
+    dispatch(fetchIncreaseItemQuantity(item));
+  }
+
+  function removeFromCart(id) {
+    dispatch(fetchRemoveFromBasket(id));
   }
   return {
     cartItems,
     addToCart,
     getCart,
+    removeFromCart,
+    increaseItemQuantity,
   };
 }
