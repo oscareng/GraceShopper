@@ -1,6 +1,7 @@
 import React from 'react';
 import { useStateValue } from './StateProvider';
 import { useDispatch } from 'react-redux';
+import Toastify from 'toastify-js';
 import {
   fetchIncreaseItemQuantity,
   fetchGetBasketItem,
@@ -18,7 +19,17 @@ function CheckoutProduct(props) {
   }
 
   function handleRemoveButton() {
-    return dispatch(fetchRemoveFromBasket(item.id));
+    dispatch(fetchRemoveFromBasket(item.id));
+    Toastify({
+      text: 'Item removed from Cart',
+      duration: 1500,
+      gravity: 'top',
+      position: 'right',
+      stopOnFocus: true,
+      style: {
+        background: 'black',
+      },
+    }).showToast();
   }
 
   return (

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchSingleProduct } from '../store/singleProductReducer';
-import { Link } from 'react-router-dom';
+import Toastify from 'toastify-js';
 import { useParams } from 'react-router';
 import {
   fetchAddToBasket,
@@ -21,7 +21,18 @@ const SingleProduct = () => {
 
   function handleAdd(product) {
     dispatch(fetchAddToBasket(product));
+    Toastify({
+      text: 'Item added to Cart',
+      duration: 1500,
+      gravity: 'top',
+      position: 'right',
+      stopOnFocus: true,
+      style: {
+        background: 'black',
+      },
+    }).showToast();
   }
+
   return (
     <div className="single_product" key={product.id}>
       <img
