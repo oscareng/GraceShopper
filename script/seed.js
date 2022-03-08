@@ -4,10 +4,6 @@ const {
   db,
   models: { User, Product, LineItem, Order },
 } = require("../server/db");
-<<<<<<< HEAD
-=======
-
->>>>>>> dd47a0dbbc4108c4910cfe4e7dca042d5b77525c
 
 const { faker } = require("@faker-js/faker");
 const { transformIncludesAndExcludes } = require("@babel/preset-env");
@@ -111,7 +107,6 @@ async function seed() {
 //       return Order.create(product);
 //     })
 //   );
-
 
 //   //Find cody and Shirt1 and associate them
 //   const cody = await User.findOne({ where: { username: 'cody' } });
