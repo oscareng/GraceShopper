@@ -1,11 +1,11 @@
-'use strict';
+"use strict";
 
-const router = require('express').Router();
-const { models } = require('../db');
+const router = require("express").Router();
+const { models } = require("../db");
 const { Product } = models;
 
 //Get /api/products
-router.get('/', async (req, res, next) => {
+router.get("/", async (req, res, next) => {
   try {
     const products = await Product.findAll();
     res.json(products);
@@ -14,7 +14,7 @@ router.get('/', async (req, res, next) => {
   }
 });
 
-router.get('/:id', async (req, res, next) => {
+router.get("/:id", async (req, res, next) => {
   try {
     const product = await Product.findByPk(req.params.id);
     res.send(product);
@@ -34,8 +34,10 @@ router.get('/:id', async (req, res, next) => {
 //   }
 // });
 
+//require admin token !
+
 // POST /api/products/
-router.post('/', async (req, res, next) => {
+router.post("/", async (req, res, next) => {
   try {
     res.status(201).json(await Product.create(req.body));
   } catch (error) {

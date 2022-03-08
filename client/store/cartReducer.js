@@ -11,12 +11,12 @@ const SET_USER = 'SET_USER';
 const INCREASE_ITEM_QUANTITY = 'INCREASE_ITEM_QUANTITY';
 
 //Action Creators
-const getBasketItems = (items) => ({
+export const getBasketItems = (items) => ({
   type: GET_BASKET_ITEMS,
   items,
 });
 
-const addToBasket = (item) => ({
+export const addToBasket = (item) => ({
   type: ADD_TO_BASKET,
   item,
 });
@@ -45,7 +45,12 @@ const increaseItemQuantity = (item) => ({
 export const fetchGetBasketItems = () => {
   return async (dispatch) => {
     try {
-      const { data: basketItems } = await axios.get(`/api/lineItem/`);
+      const token = window.localStorage.getItem("token");
+      const { data: basketItems } = await axios.get(`/api/lineItem/`, {
+        headers: {
+          authorization: token,
+        },
+      });
       dispatch(getBasketItems(basketItems));
     } catch (error) {
       console.log('fetchGetBasketItems thunk error', error);
@@ -56,10 +61,37 @@ export const fetchGetBasketItems = () => {
 export const fetchAddToBasket = (item) => {
   return async (dispatch) => {
     try {
-      const { data: lineItem } = await axios.post(`/api/lineItem/`, item);
+      const token = window.localStorage.getItem("token");
+      // const { data: alreadyInBasket } = await axios.get(
+      //   `/api/lineItem/${item.id}`,
+      //   {
+      //     headers: {
+      //       authorization: token,
+      //     },
+      //   }
+      // );
+      // if (alreadyInBasket.id === item.id) {
+      //   alreadyInBasket[id];
+      //   const update = await axios.put(
+      //     `/api/lineitem/`,
+      //     {
+      //       quantity: item.quantity + 1,
+      //     },
+      //     {
+      //       headers: {
+      //         authorization: token,
+      //       },
+      //     }
+      //   );
+      // } else {
+      const { data: lineItem } = await axios.post(`/api/lineItem/`, item, {
+        headers: {
+          authorization: token,
+        },
+      });
       dispatch(addToBasket(lineItem));
     } catch (error) {
-      console.log('fetchAddToBasket thunk error', error);
+      console.log("fetchAddToBasket thunk error", error);
     }
   };
 };
@@ -67,32 +99,15 @@ export const fetchAddToBasket = (item) => {
 export const fetchRemoveFromBasket = (id) => {
   return async (dispatch) => {
     try {
-      const { data: deleted } = await axios.delete(`/api/lineItem/${id}`);
+      const token = window.localStorage.getItem("token");
+      const { data: deleted } = await axios.delete(`/api/lineItem/${id}`, {
+        headers: {
+          authorization: token,
+        },
+      });
       dispatch(removeFromBasket(deleted));
     } catch (error) {
-      console.log('fetchRemoveFromBasket thunk error', error);
-    }
-  };
-};
-
-export const fetchGetBasketTotal = (basket) => {
-  return async (dispatch) => {
-    try {
-      const { data: basket } = await axios.get(`/api/lineItem/`);
-      dispatch(getBasketTotal(basket));
-    } catch (error) {
-      console.log('fetchGetBasketTotal thunk error', error);
-    }
-  };
-};
-
-export const fetchSetUser = (user) => {
-  return async (dispatch) => {
-    try {
-      const { data: myUser } = await axios.get(`/api/products/`);
-      dispatch(setUser(myUser));
-    } catch (error) {
-      console.log('fetchSetUser thunk error', error);
+      console.log("fetchRemoveFromBasket thunk error", error);
     }
   };
 };
