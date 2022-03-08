@@ -28,9 +28,6 @@ const Navbar = ({ handleClick, isLoggedIn }) => {
               <Link to="#" onClick={handleClick}>
                 Logout
               </Link>
-              <Link to="/checkout">
-                <AiOutlineShoppingCart id="logo" />
-              </Link>
               <Link to="/administrator">Admin</Link>
             </div>
           </nav>

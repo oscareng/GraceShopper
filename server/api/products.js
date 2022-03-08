@@ -23,14 +23,6 @@ router.get("/:id", async (req, res, next) => {
   }
 });
 
-// router.post("/", async (req, res, next) => {
-//   try {
-//     res.status(201).json(await Product.create(req.body));
-//   } catch (error) {
-//     next(error);
-//   }
-// });
-
 router.post("/", async (req, res, next) => {
   try {
     res.status(201).send(await Product.create(req.body));
@@ -38,15 +30,6 @@ router.post("/", async (req, res, next) => {
     next(error);
   }
 });
-
-// router.put("/:id", async (req, res, next) => {
-//   try {
-//     const product = await Product.findByPk(req.params.id);
-//     res.json(await product.update(req.body));
-//   } catch (error) {
-//     next(error);
-//   }
-// });
 
 router.put("/:id", async (req, res, next) => {
   try {
