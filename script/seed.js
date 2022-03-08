@@ -1,18 +1,18 @@
-'use strict';
+"use strict";
 
 const {
   db,
   models: { User, Product, LineItem, Order },
-} = require('../server/db');
+} = require("../server/db");
 
-const { faker } = require('@faker-js/faker');
-const { transformIncludesAndExcludes } = require('@babel/preset-env');
+const { faker } = require("@faker-js/faker");
+const { transformIncludesAndExcludes } = require("@babel/preset-env");
 
 let mensImagePool = [
-  'pexels-mostafa-sannad-878358.jpg',
-  'Gray_jogging_cloth.jpeg',
-  'pexels-the-lazy-artist-gallery-1342609.jpg',
-  'Black_hat.jpeg',
+  "pexels-mostafa-sannad-878358.jpg",
+  "Gray_jogging_cloth.jpeg",
+  "pexels-the-lazy-artist-gallery-1342609.jpg",
+  "Black_hat.jpeg",
 ];
 const lineitems = [];
 
@@ -26,7 +26,7 @@ function mensImages() {
 
 async function seed() {
   await db.sync({ force: true });
-  console.log('db synced!');
+  console.log("db synced!");
 
   // create users
   const users = [];
@@ -35,9 +35,17 @@ async function seed() {
       await User.create({
         username: faker.internet.userName(),
         password: faker.internet.password(),
+        isAdmin: false,
       })
     );
   }
+
+  // create users with role of admin
+  const usersAdmin = await Promise.all([
+    User.create({ username: "cody", password: "123", isAdmin: true }),
+    User.create({ username: "murphy", password: "123", isAdmin: true }),
+  ]);
+
   //create products
   const products = [];
   for (let i = 0; i < 50; i++) {
@@ -124,16 +132,16 @@ async function seed() {
  The `seed` function is concerned only with modifying the database.
 */
 async function runSeed() {
-  console.log('seeding...');
+  console.log("seeding...");
   try {
     await seed();
   } catch (err) {
     console.error(err);
     process.exitCode = 1;
   } finally {
-    console.log('closing db connection');
+    console.log("closing db connection");
     await db.close();
-    console.log('db connection closed');
+    console.log("db connection closed");
   }
 }
 
