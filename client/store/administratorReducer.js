@@ -29,21 +29,27 @@ export const createNewProduct = (product) => {
   };
 };
 
-export const updateProduct = (product) => {
+export const updateProduct = (product, history) => {
   return async (dispatch) => {
-    const { data: updated } = await axios.put(`/api/products/${product.id}`);
+    const { data: updated } = await axios.put(
+      `/api/products/${product.id}`,
+      product
+    );
+    console.log("myreducerproduct", product);
     dispatch(_updateProduct(updated));
+    history.push("/");
   };
 };
 
-export const deleteProduct = (id) => {
+export const deleteProduct = (id, history) => {
   return async (dispatch) => {
     const { data: product } = await axios.delete(`/api/products/${id}`);
     dispatch(_deleteProduct(product));
+    history.push("/");
   };
 };
 
-const initialState = [];
+const initialState = {};
 
 // Take a look at app/redux/index.js to see where this reducer is
 // added to the Redux store with combineReducers
