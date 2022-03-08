@@ -1,20 +1,21 @@
-import React, { Component, Fragment } from "react";
-import { connect } from "react-redux";
-import { withRouter, Route, Switch, Redirect } from "react-router-dom";
-import { Login, Signup } from "./components/AuthForm";
-import AllProducts from "./components/AllProducts";
-import SingleProduct from "./components/SingleProduct";
-import Confirmation from "./components/Confirmation";
-import { LandingPage } from "./components/LandingPage";
-import Home from "./components/Home";
-import { me } from "./store";
-import WomenProducts from "./components/WomenProducts";
-import MenProducts from "./components/MenProducts";
-import Checkout from "./components/Checkout";
-import Administrator from "./components/Administrator";
-import EditProduct from "./components/EditProduct";
-import SingleProductGuest from "./components/SingleProductGuest";
-import CheckoutGuest from "./components/CheckoutGuest";
+import React, { Component, Fragment } from 'react';
+import { connect } from 'react-redux';
+import { withRouter, Route, Switch, Redirect } from 'react-router-dom';
+import { Login, Signup } from './components/AuthForm';
+import AllProducts from './components/AllProducts';
+import SingleProduct from './components/SingleProduct';
+import Confirmation from './components/Confirmation';
+import { LandingPage } from './components/LandingPage';
+import Home from './components/Home';
+import { me } from './store';
+import WomenProducts from './components/WomenProducts';
+import MenProducts from './components/MenProducts';
+import Checkout from './components/Checkout';
+import Administrator from './components/Administrator';
+import EditProduct from './components/EditProduct';
+import SingleProductGuest from './components/SingleProductGuest';
+import CheckoutGuest from './components/CheckoutGuest';
+import UserForm from './components/UserForm';
 
 /**
  * COMPONENT
@@ -41,6 +42,7 @@ class Routes extends Component {
         <Route exact path="/mens" component={MenProducts} />
         <Route exact path="/administrator" component={Administrator} />
         <Route exact path="/editproduct/:id" component={EditProduct} />
+        <Route exact path="/form" component={UserForm} />
       </div>
     );
   }
