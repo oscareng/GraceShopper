@@ -5,6 +5,7 @@ const Product = require("./models/Product");
 const User = require("./models/User");
 const Order = require("./models/Order");
 const LineItem = require("./models/LineItem");
+
 //associations could go here!
 User.hasMany(Order);
 Order.belongsTo(User);

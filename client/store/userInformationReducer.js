@@ -1,15 +1,13 @@
 import axios from "axios";
+const initialState = [];
 
-// Action types
 const GOT_USERS = "GOT_USERS";
 
-// Action creators
 export const gotUsers = (users) => ({
   type: GOT_USERS,
   users,
 });
 
-// THUNK CREATORS go here:
 export const fetchUsers = () => {
   return async (dispatch) => {
     try {
@@ -20,8 +18,6 @@ export const fetchUsers = () => {
     }
   };
 };
-
-const initialState = [];
 
 export default function userInformationReducer(state = initialState, action) {
   switch (action.type) {
