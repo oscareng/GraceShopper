@@ -17,10 +17,10 @@ function CheckoutProduct(props) {
     dispatch(fetchIncreaseItemQuantity(id));
   }
 
-  function handleRemoveButton(item) {
-    dispatch(fetchRemoveFromBasket(item.id));
+  function handleRemoveButton() {
+    return dispatch(fetchRemoveFromBasket(item.id));
   }
-  console.log('checkoutProduct item:', item);
+
   return (
     <div className="checkoutProduct">
       <img className="checkoutProduct__image" src={imageUrl} alt="" />
@@ -37,7 +37,7 @@ function CheckoutProduct(props) {
             +
           </button>
         </p>
-        <button onClick={() => handleRemoveButton(item)}>Remove</button>
+        <button onClick={() => handleRemoveButton()}>Remove</button>
         <p className="checkoutProduct__price">
           <small>$</small>
           <strong>{saleprice}</strong>

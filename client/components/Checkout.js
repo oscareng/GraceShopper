@@ -7,7 +7,9 @@ import { fetchGetBasketItems } from '../store/cartReducer.js';
 import Home from './Home.js';
 
 function Checkout() {
-  const cartItems = useSelector((state) => state.cartReducer);
+  const cartItems = useSelector((state) => {
+    return state.cartReducer;
+  });
 
   const dispatch = useDispatch();
 

@@ -66,7 +66,6 @@ export const fetchRemoveFromBasket = (id) => {
   return async (dispatch) => {
     try {
       const { data: deleted } = await axios.delete(`/api/lineItem/${id}`);
-      console.log('DELETED:', deleted);
       dispatch(removeFromBasket(deleted));
     } catch (error) {
       console.log('fetchRemoveFromBasket thunk error', error);
@@ -111,20 +110,14 @@ export const fetchIncreaseItemQuantity = (id) => {
 
 export default function cartreducer(state = initialState, action) {
   switch (action.type) {
-    //Get multiple items in cart
     case GET_BASKET_ITEMS:
       return action.items;
-
     case ADD_TO_BASKET:
-      //Logic for adding item to basket
-
       return [...state, action.item];
-
-    case REMOVE_FROM_BASKET: {
-      state.pop();
-      return [...state];
-    }
-    case 'SET_USER':
+    case REMOVE_FROM_BASKET:
+      const removedItem = state.filter((item) => item.id !== action.id.id);
+      return removedItem;
+    case SET_USER:
       return {
         ...state,
         user: action.user,
