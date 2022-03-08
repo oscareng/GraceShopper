@@ -6,7 +6,6 @@ import { useParams } from "react-router";
 import { fetchAddToBasket } from "../store/cartReducer";
 import useCart from "../hooks/useCart";
 
-
 const SingleProduct = () => {
   const product = useSelector((state) => state.product);
   const dispatch = useDispatch();
@@ -16,14 +15,14 @@ const SingleProduct = () => {
   useEffect(() => {
     dispatch(fetchSingleProduct(id));
   }, []);
-  console.log('PRODUCT', product);
+  console.log("PRODUCT", product);
 
   return (
     <div className="single_product" key={product.id}>
       <img
         className="all_products__image"
         src={`../images/${product.imageUrl}`}
-        style={{ width: '600px', height: '400px' }}
+        style={{ width: "600px", height: "400px" }}
       />
       <h1 className="single_products__name">{product.name}</h1>
       <h2>Size: {product.size}</h2>

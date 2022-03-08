@@ -1,10 +1,10 @@
-import React from 'react';
-import { useStateValue } from './StateProvider';
-import { useDispatch } from 'react-redux';
+import React from "react";
+import { useStateValue } from "./StateProvider";
+import { useDispatch } from "react-redux";
 import {
   fetchIncreaseItemQuantity,
   fetchGetBasketItem,
-} from '../store/cartReducer';
+} from "../store/cartReducer";
 
 function CheckoutProduct(props) {
   const { name, imageUrl, saleprice, quantity, item } = props;
@@ -13,7 +13,6 @@ function CheckoutProduct(props) {
   function handleIncreaseButton(item) {
     dispatch(fetchIncreaseItemQuantity(item));
   }
-  console.log('checkoutProduct item:', item);
   return (
     <div className="checkoutProduct">
       <img className="checkoutProduct__image" src={imageUrl} alt="" />
