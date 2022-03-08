@@ -2,6 +2,9 @@ import React from 'react';
 import { useStateValue } from './StateProvider';
 import { useDispatch } from 'react-redux';
 import useCart from '../hooks/useCart';
+import Toastify from 'toastify-js';
+import { Button } from '@material-ui/core';
+
 import {
   fetchIncreaseItemQuantity,
   fetchGetBasketItem,
@@ -11,6 +14,25 @@ import {
 function CheckoutProduct(props) {
   const { name, imageUrl, saleprice, quantity, item } = props;
   const { removeFromCart, increaseItemQuantity } = useCart();
+  const dispatch = useDispatch();
+
+  function handleIncreaseButton(item) {
+    dispatch(fetchIncreaseItemQuantity(item));
+  }
+
+  function handleRemoveButton() {
+    dispatch(fetchRemoveFromBasket(item.id));
+    Toastify({
+      text: 'Item removed from Cart',
+      duration: 1500,
+      gravity: 'top',
+      position: 'right',
+      stopOnFocus: true,
+      style: {
+        background: 'black',
+      },
+    }).showToast();
+  }
 
   return (
     <div className="checkoutProduct">
