@@ -2,7 +2,7 @@
 
 body {
   font-family: "Abel";
-  padding-top: 70px;
+  padding-top: 90px;
 }
 
 label {
@@ -25,7 +25,7 @@ nav {
   padding: 10px 0;
   top: 0;
   display: block;
-  background-color: transparent;
+  background-color: white;
   /* position: fixed;
   width: 100%;
   top: 0;
@@ -209,6 +209,12 @@ nav > div {
 }
 
 /* Adding style to Administrator page */
+
+.administrator {
+  padding-top: 5px;
+  display: inline-block;
+}
+
 .administrator_title {
   font-weight: 800;
   padding: 10px;
@@ -226,4 +232,9 @@ nav > div {
   box-sizing: border-box;
   height: 20%;
   width: 100%;
+}
+table,
+th,
+td {
+  border: 1px solid;
 }

@@ -18,8 +18,8 @@ function Administrator() {
 
   if (isAdmin) {
     return (
-      <div>
-        <div className="administrator">
+      <div className="administrator">
+        <div>
           <div>
             <h2 className="administrator_title"> Add a new product</h2>
             <CreateNewProduct />
