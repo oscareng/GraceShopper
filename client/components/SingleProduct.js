@@ -15,7 +15,6 @@ const SingleProduct = () => {
   useEffect(() => {
     dispatch(fetchSingleProduct(id));
   }, []);
-  console.log("PRODUCT", product);
 
   return (
     <div className="single_product" key={product.id}>

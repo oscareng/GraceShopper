@@ -60,13 +60,25 @@ export const fetchGetBasketItems = () => {
 export const fetchAddToLocalBasket = (item) => {
   return async (dispatch) => {
     try {
+      //check if cartItems exists in localstorage
       const items = JSON.parse(window.localStorage.getItem("cartItems"));
-      console.log(items);
       if (items !== null) {
-        items.push(item);
-        window.localStorage.setItem("cartItems", JSON.stringify(items));
-        dispatch(addToBasket(item));
+        //if cart item already exists in localstorage, increment quantity by one then replace new obj in array then add back to localstorage
+        const found = items.find((element) => element.id === item.id);
+        found["quantity"] += 1;
+        if (found) {
+          const index = items.findIndex((element) => element.id === item.id);
+          items[index] = found;
+          window.localStorage.setItem("cartItems", JSON.stringify(items));
+          dispatch(addToBasket(item));
+        } else {
+          //item does not exist in localstorage yet, add item to array then add to local storage
+          items.push(item);
+          window.localStorage.setItem("cartItems", JSON.stringify(items));
+          dispatch(addToBasket(item));
+        }
       } else {
+        //cartItems does not exist, push item into array then store as string in localstorage
         let cartItems = [];
         cartItems.push(item);
         window.localStorage.setItem("cartItems", JSON.stringify(cartItems));
