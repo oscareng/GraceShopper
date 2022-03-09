@@ -16,11 +16,11 @@ function Checkout() {
   return (
     <div className="checkout">
       <div className="checkout__left">
-        {/* <img
+        <img
           className="checkout__ad"
-          src="https://www.gw-world.com/fileadmin/_processed_/4/4/csm_fashion_Header_1920x400_2f48325f56.jpg"
+          src={'../images/city-banner-day.png'}
           alt=""
-        /> */}
+        />
         {cartItems.length === 0 || cartItems === undefined ? (
           <div>
             <h2>Your Shopping Basket is empty</h2>
