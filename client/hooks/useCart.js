@@ -1,5 +1,5 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   fetchAddToBasket,
   fetchGetBasketItems,
@@ -16,7 +16,7 @@ export default function useCart() {
 
   const dispatch = useDispatch();
   useEffect(() => {
-    window.localStorage.setItem("cartItems", JSON.stringify(cartItems));
+    window.localStorage.setItem('cartItems', JSON.stringify(cartItems));
   }, [cartItems]);
 
   function addToCart(product) {
@@ -30,7 +30,7 @@ export default function useCart() {
     if (isLoggedIn) {
       dispatch(fetchGetBasketItems());
     } else {
-      const items = JSON.parse(window.localStorage.getItem("cartItems"));
+      const items = JSON.parse(window.localStorage.getItem('cartItems'));
       dispatch(getBasketItems(items));
     }
   }

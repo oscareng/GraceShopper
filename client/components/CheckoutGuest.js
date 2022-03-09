@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { useStateValue } from "./StateProvider.js";
-import CheckoutProduct from "./CheckoutProduct.js";
-import Subtotal from "./Subtotal";
-import { fetchGetGuestBasketItems } from "../store/cartReducer.js";
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { useStateValue } from './StateProvider.js';
+import CheckoutProduct from './CheckoutProduct.js';
+import Subtotal from './Subtotal';
+import { fetchGetGuestBasketItems } from '../store/cartReducer.js';
 
 function Checkout() {
   const cartItems = useSelector((state) => state.cartReducer);
@@ -18,7 +18,7 @@ function Checkout() {
       <div className="checkout__left">
         <img
           className="checkout__ad"
-          src="https://www.gw-world.com/fileadmin/_processed_/4/4/csm_fashion_Header_1920x400_2f48325f56.jpg"
+          src={'../images/city-banner-day.png'}
           alt=""
         />
         {cartItems.length === 0 || cartItems === undefined ? (

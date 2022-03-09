@@ -11,6 +11,7 @@ import {
   fetchRemoveFromBasket,
 } from "../store/cartReducer";
 
+
 function CheckoutProduct(props) {
   const { name, imageUrl, saleprice, quantity, item } = props;
   const { removeFromCart, increaseItemQuantity } = useCart();
@@ -50,6 +51,7 @@ function CheckoutProduct(props) {
             +
           </button>
         </p>
+
         <button onClick={() => removeFromCart(item.id)}>Remove</button>
         <p className="checkoutProduct__price">
           <small>$</small>
