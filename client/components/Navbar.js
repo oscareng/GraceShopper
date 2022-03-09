@@ -1,10 +1,10 @@
-import React from "react";
-import { connect } from "react-redux";
-import { Link } from "react-router-dom";
-import { AiOutlineShoppingCart } from "react-icons/ai";
-import { GiOwl } from "react-icons/gi";
-import { logout } from "../store";
-import useAuth from "../hooks/useAuth";
+import React from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { AiOutlineShoppingCart } from 'react-icons/ai';
+import { GiOwl } from 'react-icons/gi';
+import { logout } from '../store';
+import useAuth from '../hooks/useAuth';
 
 const Navbar = ({ handleClick, isLoggedIn }) => {
   const { user } = useAuth();
@@ -31,6 +31,7 @@ const Navbar = ({ handleClick, isLoggedIn }) => {
               <Link to="/administrator">Admin</Link>
             </div>
           </nav>
+          <hr />
         </div>
       );
     } else {
@@ -55,6 +56,7 @@ const Navbar = ({ handleClick, isLoggedIn }) => {
               </Link>
             </div>
           </nav>
+          <hr />
         </div>
       );
     }
@@ -80,6 +82,7 @@ const Navbar = ({ handleClick, isLoggedIn }) => {
     <Link to="/signup">Sign Up</Link> */}
           </div>
         </nav>
+        <hr />
       </div>
     );
   }

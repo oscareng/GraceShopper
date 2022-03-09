@@ -26,6 +26,7 @@ router.get("/:id", async (req, res, next) => {
 router.post("/", async (req, res, next) => {
   try {
     res.status(201).send(await Product.create(req.body));
+    console.log("create producr", product);
   } catch (error) {
     next(error);
   }

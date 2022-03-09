@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom';
 export const LandingPage = () => {
   return (
     <div>
+      <img id="landing-page-image" src={'../images/city-banner-home.png'} />
       <Box textAlign="center">
         <Typography variant="h2" align="center">
           GRACE NYC
