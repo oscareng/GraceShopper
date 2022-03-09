@@ -1,9 +1,9 @@
-import React from "react";
-import { useStateValue } from "./StateProvider";
-import { useDispatch } from "react-redux";
-import useCart from "../hooks/useCart";
-import Toastify from "toastify-js";
-import { Button } from "@material-ui/core";
+import React from 'react';
+import { useStateValue } from './StateProvider';
+import { useDispatch } from 'react-redux';
+import useCart from '../hooks/useCart';
+import Toastify from 'toastify-js';
+import { Button } from '@material-ui/core';
 
 function CheckoutProduct(props) {
   const { name, imageUrl, price, quantity, item } = props;
@@ -26,8 +26,15 @@ function CheckoutProduct(props) {
             +
           </button>
         </p>
+        <Button
+          size="small"
+          variant="contained"
+          style={{ backgroundColor: 'grey' }}
+          onClick={() => removeFromCart(item.id)}
+        >
+          Remove
+        </Button>
 
-        <button onClick={() => removeFromCart(item.id)}>Remove</button>
         <p className="checkoutProduct__price">
           <small>$</small>
           <strong>{price}</strong>

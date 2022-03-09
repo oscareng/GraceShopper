@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Abel&family=Bebas+Neue&family=Playfair+Display+SC&family=Staatliches&display=swap');
 
 body {
-  font-family: "Abel";
+  font-family: 'Abel';
   padding-top: 90px;
 }
 
@@ -15,6 +15,10 @@ label {
 
 .MuiTypography-subtitle1 {
   font-style: italic;
+}
+
+#landing-page-image {
+  padding-left: 11%;
 }
 
 nav {
