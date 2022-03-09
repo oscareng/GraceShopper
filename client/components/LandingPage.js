@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 export const LandingPage = () => {
   return (
     <div>
-      <Box textAlign="center">
+      <Box textAlign="center" sx={{ paddingTop: '300px' }}>
         <Typography variant="h2" align="center">
           GRACE NYC
         </Typography>
