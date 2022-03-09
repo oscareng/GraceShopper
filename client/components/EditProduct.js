@@ -12,7 +12,7 @@ export class EditProduct extends React.Component {
     super(props);
     this.state = {
       name: "",
-      price: "",
+      price: 0,
       gender: "",
       size: "",
       description: "",
@@ -23,7 +23,6 @@ export class EditProduct extends React.Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handlePriceChange = this.handlePriceChange.bind(this);
   }
 
   componentDidMount() {
@@ -39,7 +38,7 @@ export class EditProduct extends React.Component {
     if (prevProps.product.id !== this.props.product.id) {
       this.setState({
         name: this.props.product.name || "",
-        price: this.props.product.price || "",
+        price: this.props.product.price || 0,
         gender: this.props.product.gender || "",
         size: this.props.product.size || "",
         description: this.props.product.description || "",
@@ -55,12 +54,12 @@ export class EditProduct extends React.Component {
       [evt.target.name]: evt.target.value,
     });
   }
-  handlePriceChange(evt) {
-    const newPrice = parseInt(evt.target.value);
-    this.setState({
-      [evt.target.name]: newPrice,
-    });
-  }
+  // handlePriceChange(evt) {
+  //   const newPrice = parseInt(evt.target.value);
+  //   this.setState({
+  //     [evt.target.name]: newPrice,
+  //   });
+  // }
   handleSubmit(evt) {
     evt.preventDefault();
     console.log("mystate", this.state);
@@ -83,7 +82,7 @@ export class EditProduct extends React.Component {
       imageUrl,
     } = this.state;
 
-    const { handleSubmit, handleChange, handlePriceChange } = this;
+    const { handleSubmit, handleChange } = this;
 
     return (
       <div>
@@ -92,7 +91,7 @@ export class EditProduct extends React.Component {
           <input name="name" onChange={handleChange} value={name} />
 
           <label htmlFor="price">Price:</label>
-          <input name="price" onChange={handlePriceChange} value={price} />
+          <input name="price" onChange={handleChange} value={price} />
 
           <label htmlFor="gender">Gender:</label>
           <select name="gender" onChange={handleChange} value={gender}>
