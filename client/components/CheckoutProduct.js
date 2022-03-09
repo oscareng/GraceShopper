@@ -4,10 +4,9 @@ import { useDispatch } from "react-redux";
 import useCart from "../hooks/useCart";
 import Toastify from "toastify-js";
 import { Button } from "@material-ui/core";
-import useCart from "../hooks/useCart";
 
 function CheckoutProduct(props) {
-  const { name, imageUrl, saleprice, quantity, item } = props;
+  const { name, imageUrl, price, quantity, item } = props;
   const { removeFromCart, increaseItemQuantity } = useCart();
   useCart();
 

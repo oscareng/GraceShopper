@@ -8,7 +8,6 @@ import {
   fetchIncreaseItemQuantity,
   fetchIncreaseLocalItemQuantity,
   fetchRemoveFromBasket,
-  fetchRemoveFromBasket,
 } from "../store/cartReducer";
 import useAuth from "./useAuth.js";
 

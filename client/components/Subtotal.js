@@ -33,7 +33,7 @@ function Subtotal() {
         prefix={"$"}
       />
       <Link to={"/confirmation"}>
-        <button>Confirm Purchase</button>
+        <button>Checkout</button>
       </Link>
     </div>
   );

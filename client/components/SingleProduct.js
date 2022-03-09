@@ -1,42 +1,20 @@
-
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { fetchSingleProduct } from '../store/singleProductReducer';
-import Toastify from 'toastify-js';
-import { Button } from '@material-ui/core';
-import { useParams } from 'react-router';
-import {
-  fetchAddToBasket,
-  fetchGetBasketItem,
-  fetchIncreaseItemQuantity,
-} from '../store/cartReducer';
-
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchSingleProduct } from "../store/singleProductReducer";
+import { Link } from "react-router-dom";
+import { Button } from "@material-ui/core";
+import { useParams } from "react-router";
 import useCart from "../hooks/useCart";
-
+import { fetchAddToBasket } from "../store/cartReducer";
 const SingleProduct = () => {
   const product = useSelector((state) => state.product);
   const dispatch = useDispatch();
   const { id } = useParams();
-
   const { addToCart } = useCart();
+  console.log(product);
   useEffect(() => {
     dispatch(fetchSingleProduct(id));
   }, []);
-
-
-  function handleAdd(product) {
-    dispatch(fetchAddToBasket(product));
-    Toastify({
-      text: 'Item added to Cart',
-      duration: 1500,
-      gravity: 'top',
-      position: 'right',
-      stopOnFocus: true,
-      style: {
-        background: 'black',
-      },
-    }).showToast();
-  }
 
   return (
     <div className="single_product" key={product.id}>
@@ -50,15 +28,10 @@ const SingleProduct = () => {
       <h2>Price: ${product.price}.00</h2>
       <h2>Description: {product.description}</h2>
       <Button
-        onClick={() => handleAdd(product)}
+        onClick={() => addToCart(product)}
         size="medium"
         variant="contained"
-        style={{ backgroundColor: 'grey' }}
-
-//       <button
-//         className="single_products__button"
-//         onClick={() => addToCart(product)}
-//         type="button"
+        style={{ backgroundColor: "grey" }}
       >
         Add to Cart
       </Button>
