@@ -50,7 +50,15 @@ function CheckoutProduct(props) {
             +
           </button>
         </p>
-        <button onClick={() => removeFromCart(item.id)}>Remove</button>
+        <Button
+          size="medium"
+          variant="contained"
+          style={{ backgroundColor: 'grey' }}
+          onClick={() => handleRemoveButton(item.id)}
+        >
+          Remove
+        </Button>
+
         <p className="checkoutProduct__price">
           <small>$</small>
           <strong>{saleprice}</strong>
