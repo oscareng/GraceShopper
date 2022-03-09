@@ -1,7 +1,7 @@
-import React from "react";
-import CurrencyFormat from "react-currency-format";
-import { Link } from "react-router-dom";
-import useCart from "../hooks/useCart";
+import React from 'react';
+import CurrencyFormat from 'react-currency-format';
+import { Link } from 'react-router-dom';
+import useCart from '../hooks/useCart';
 function Subtotal() {
   const { cartItems } = useCart();
   console.log(cartItems);
@@ -28,11 +28,11 @@ function Subtotal() {
         )}
         decimalScale={2}
         //value={getBasketTotal(basket)}
-        displayType={"text"}
+        displayType={'text'}
         thousandSeparator={true}
-        prefix={"$"}
+        prefix={'$'}
       />
-      <Link to={"/confirmation"}>
+      <Link to={'/form'}>
         <button>Checkout</button>
       </Link>
     </div>
