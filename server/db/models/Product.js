@@ -17,6 +17,7 @@ const Product = db.define("Product", {
   category: { type: Sequelize.STRING, allowNull: false, defaultValue: "Shirt" },
   stock: { type: Sequelize.INTEGER, allowNull: false, defaultValue: 1 },
   imageUrl: { type: Sequelize.STRING, defaultValue: "png" },
+  quantity: { type: Sequelize.INTEGER, defaultValue: 1 },
 });
 
 module.exports = Product;

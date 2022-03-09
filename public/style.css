@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Abel&family=Bebas+Neue&family=Playfair+Display+SC&family=Staatliches&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Abel&family=Bebas+Neue&family=Playfair+Display+SC&family=Staatliches&display=swap");
 
 body {
-  font-family: 'Abel';
+  font-family: "Abel";
 }
 
 label {
@@ -82,11 +82,10 @@ nav > div {
   margin-top: 1px;
 }
 .all_products__button {
-  background: #f0c14b;
+  background: #000000;
   border: 1px solid;
   margin-top: 5px;
-  border-color: #a88734 #9c7e31 #846a29;
-  color: #111;
+  color: rgb(255, 255, 255);
 }
 /* Adding style in single_products */
 .single_products {
@@ -191,4 +190,14 @@ nav > div {
 
 .confirmation > small {
   text-align: center;
+}
+
+/* Adding style to Administrator page */
+.administrator_title {
+  font-weight: bolder;
+  padding: 10px;
+}
+.administrator_box {
+  display: flex;
+  flex-direction: wrap;
 }

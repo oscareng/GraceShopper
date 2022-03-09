@@ -6,7 +6,7 @@ const LineItem = db.define("LineItem", {
     allowNull: false,
     validate: { notEmpty: true },
   },
-  saleprice: { type: Sequelize.INTEGER, allowNull: false, defaultValue: 20 },
+  price: { type: Sequelize.INTEGER, allowNull: false, defaultValue: 20 },
   size: { type: Sequelize.STRING, allowNull: false, defaultValue: "Medium" },
   quantity: { type: Sequelize.INTEGER, allowNull: false, defaultValue: 1 },
   imageUrl: { type: Sequelize.STRING, defaultValue: "png" },

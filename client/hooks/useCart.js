@@ -3,8 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   fetchAddToBasket,
   fetchGetBasketItems,
-  getBasketItems,
-  addToBasket,
+  fetchGetLocalBasket,
+  fetchAddToLocalBasket,
+  fetchIncreaseItemQuantity,
+  fetchIncreaseLocalItemQuantity,
+  fetchRemoveFromBasket,
 } from "../store/cartReducer";
 import useAuth from "./useAuth.js";
 
@@ -13,28 +16,67 @@ export default function useCart() {
   const cartItems = useSelector((state) => state.cartReducer);
 
   const dispatch = useDispatch();
+
   useEffect(() => {
-    window.localStorage.setItem("cartItems", JSON.stringify(cartItems));
-  }, [cartItems]);
+    if (isLoggedIn) {
+      dispatch(fetchGetBasketItems());
+    } else {
+      dispatch(fetchGetLocalBasket());
+    }
+  }, [isLoggedIn]);
 
   function addToCart(product) {
     if (isLoggedIn) {
       dispatch(fetchAddToBasket(product));
+      Toastify({
+        text: "Item added to Cart",
+        duration: 1500,
+        gravity: "top",
+        position: "right",
+        stopOnFocus: true,
+        style: {
+          background: "black",
+        },
+      }).showToast();
     } else {
-      dispatch(addToBasket(product));
+      dispatch(fetchAddToLocalBasket(product));
+      Toastify({
+        text: "Item added to Cart",
+        duration: 1500,
+        gravity: "top",
+        position: "right",
+        stopOnFocus: true,
+        style: {
+          background: "black",
+        },
+      }).showToast();
     }
   }
-  function getCart() {
+  function increaseItemQuantity(item) {
     if (isLoggedIn) {
-      dispatch(fetchGetBasketItems());
+      dispatch(fetchIncreaseItemQuantity(item));
     } else {
-      const items = JSON.parse(window.localStorage.getItem("cartItems"));
-      dispatch(getBasketItems(items));
+      dispatch(fetchIncreaseLocalItemQuantity(item));
     }
+  }
+
+  function removeFromCart(id) {
+    dispatch(fetchRemoveFromBasket(id));
+    Toastify({
+      text: "Item removed from Cart",
+      duration: 1500,
+      gravity: "top",
+      position: "right",
+      stopOnFocus: true,
+      style: {
+        background: "black",
+      },
+    }).showToast();
   }
   return {
     cartItems,
     addToCart,
-    getCart,
+    removeFromCart,
+    increaseItemQuantity,
   };
 }

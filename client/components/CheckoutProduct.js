@@ -1,19 +1,15 @@
-import React from 'react';
-import { useStateValue } from './StateProvider';
-import { useDispatch } from 'react-redux';
-import {
-  fetchIncreaseItemQuantity,
-  fetchGetBasketItem,
-} from '../store/cartReducer';
+import React from "react";
+import { useStateValue } from "./StateProvider";
+import { useDispatch } from "react-redux";
+import useCart from "../hooks/useCart";
+import Toastify from "toastify-js";
+import { Button } from "@material-ui/core";
 
 function CheckoutProduct(props) {
-  const { name, imageUrl, saleprice, quantity, item } = props;
-  const dispatch = useDispatch();
+  const { name, imageUrl, price, quantity, item } = props;
+  const { removeFromCart, increaseItemQuantity } = useCart();
+  useCart();
 
-  function handleIncreaseButton(item) {
-    dispatch(fetchIncreaseItemQuantity(item));
-  }
-  console.log('checkoutProduct item:', item);
   return (
     <div className="checkoutProduct">
       <img className="checkoutProduct__image" src={imageUrl} alt="" />
@@ -24,15 +20,16 @@ function CheckoutProduct(props) {
           Quantity: {quantity}
           <button
             className="checkoutProduct__name"
-            onClick={() => handleIncreaseButton(item)}
+            onClick={() => increaseItemQuantity(item)}
             type="button"
           >
             +
           </button>
         </p>
+        <button onClick={() => removeFromCart(item.id)}>Remove</button>
         <p className="checkoutProduct__price">
           <small>$</small>
-          <strong>{saleprice}</strong>
+          <strong>{price}</strong>
         </p>
       </div>
     </div>

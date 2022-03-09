@@ -5,6 +5,7 @@ import {
   getSingleProduct,
 } from "../store/singleProductReducer";
 import { connect } from "react-redux";
+import products from "../store/productsReducer";
 
 export class EditProduct extends React.Component {
   constructor(props) {
@@ -22,6 +23,7 @@ export class EditProduct extends React.Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handlePriceChange = this.handlePriceChange.bind(this);
   }
 
   componentDidMount() {
@@ -53,10 +55,20 @@ export class EditProduct extends React.Component {
       [evt.target.name]: evt.target.value,
     });
   }
-
+  handlePriceChange(evt) {
+    const newPrice = parseInt(evt.target.value);
+    this.setState({
+      [evt.target.name]: newPrice,
+    });
+  }
   handleSubmit(evt) {
     evt.preventDefault();
-    this.props.updateProduct({ ...this.props.product, ...this.state });
+    console.log("mystate", this.state);
+    console.log("myproduct", this.props.product);
+    this.props.updateProduct({
+      ...this.props.product,
+      ...this.state,
+    });
   }
 
   render() {
@@ -71,7 +83,7 @@ export class EditProduct extends React.Component {
       imageUrl,
     } = this.state;
 
-    const { handleSubmit, handleChange } = this;
+    const { handleSubmit, handleChange, handlePriceChange } = this;
 
     return (
       <div>
@@ -80,10 +92,10 @@ export class EditProduct extends React.Component {
           <input name="name" onChange={handleChange} value={name} />
 
           <label htmlFor="price">Price:</label>
-          <input name="price" onChange={handleChange} value={price} />
+          <input name="price" onChange={handlePriceChange} value={price} />
 
           <label htmlFor="gender">Gender:</label>
-          <select name="gender" value={gender} onChange={handleChange}>
+          <select name="gender" onChange={handleChange} value={gender}>
             <option value="Female">Female</option>
             <option value="Male">Male</option>
           </select>
@@ -153,9 +165,9 @@ const mapStateToProps = ({ product }) => ({
   product,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  updateProduct: (product) => dispatch(updateProduct(product)),
-  deleteProduct: (product) => dispatch(deleteProduct(product)),
+const mapDispatchToProps = (dispatch, { history }) => ({
+  updateProduct: (product) => dispatch(updateProduct(product, history)),
+  deleteProduct: (product) => dispatch(deleteProduct(product, history)),
   fetchSingleProduct: (id) => dispatch(fetchSingleProduct(id)),
   clearProduct: () => dispatch(getSingleProduct({})),
 });

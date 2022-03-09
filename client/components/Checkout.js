@@ -5,12 +5,10 @@ import CheckoutProduct from "./CheckoutProduct.js";
 import Subtotal from "./Subtotal";
 import { fetchGetBasketItems } from "../store/cartReducer.js";
 import useCart from "../hooks/useCart";
+
 function Checkout() {
   const { cartItems, getCart } = useCart();
-
-  useEffect(() => {
-    getCart();
-  }, []);
+  useCart();
   return (
     <div className="checkout">
       <div className="checkout__left">
@@ -32,7 +30,7 @@ function Checkout() {
                 <CheckoutProduct
                   key={item.id}
                   name={item.name}
-                  saleprice={item.saleprice}
+                  price={item.price}
                   imageUrl={`../images/${item.imageUrl}`}
                   quantity={item.quantity}
                   item={item}
@@ -42,11 +40,11 @@ function Checkout() {
           </div>
         )}
       </div>
-      {/* {cartItems.length > 0 && (
+      {cartItems.length > 0 && (
         <div className="checkout__right">
           <Subtotal />
         </div>
-      )} */}
+      )}
     </div>
   );
 }

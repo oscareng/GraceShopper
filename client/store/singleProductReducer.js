@@ -1,12 +1,12 @@
-import axios from 'axios';
+import axios from "axios";
 
 const initialState = {};
 
 //Action Types
-const GOT_SINGLE_PRODUCT = 'GOT_SINGLE_PRODUCT';
+const GOT_SINGLE_PRODUCT = "GOT_SINGLE_PRODUCT";
 
 //Action Creators
-const getSingleProduct = (product) => ({
+export const getSingleProduct = (product) => ({
   type: GOT_SINGLE_PRODUCT,
   product,
 });
@@ -18,7 +18,7 @@ export const fetchSingleProduct = (id) => {
       const { data: product } = await axios.get(`/api/products/${id}`);
       dispatch(getSingleProduct(product));
     } catch (error) {
-      console.log('fetchProduct thunk error', error);
+      console.log("fetchProduct thunk error", error);
     }
   };
 };
