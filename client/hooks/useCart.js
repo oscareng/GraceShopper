@@ -7,6 +7,8 @@ import {
   fetchAddToLocalBasket,
   fetchIncreaseItemQuantity,
   fetchIncreaseLocalItemQuantity,
+  fetchRemoveFromBasket,
+  fetchRemoveFromBasket,
 } from "../store/cartReducer";
 import useAuth from "./useAuth.js";
 
@@ -27,8 +29,28 @@ export default function useCart() {
   function addToCart(product) {
     if (isLoggedIn) {
       dispatch(fetchAddToBasket(product));
+      Toastify({
+        text: "Item added to Cart",
+        duration: 1500,
+        gravity: "top",
+        position: "right",
+        stopOnFocus: true,
+        style: {
+          background: "black",
+        },
+      }).showToast();
     } else {
       dispatch(fetchAddToLocalBasket(product));
+      Toastify({
+        text: "Item added to Cart",
+        duration: 1500,
+        gravity: "top",
+        position: "right",
+        stopOnFocus: true,
+        style: {
+          background: "black",
+        },
+      }).showToast();
     }
   }
   function increaseItemQuantity(item) {
@@ -38,9 +60,24 @@ export default function useCart() {
       dispatch(fetchIncreaseLocalItemQuantity(item));
     }
   }
+
+  function removeFromCart(id) {
+    dispatch(fetchRemoveFromBasket(id));
+    Toastify({
+      text: "Item removed from Cart",
+      duration: 1500,
+      gravity: "top",
+      position: "right",
+      stopOnFocus: true,
+      style: {
+        background: "black",
+      },
+    }).showToast();
+  }
   return {
     cartItems,
     addToCart,
+    removeFromCart,
     increaseItemQuantity,
   };
 }

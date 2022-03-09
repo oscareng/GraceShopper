@@ -17,6 +17,10 @@ const User = db.define("User", {
     allowNull: false,
     validate: { is: ["^[a-zA-Z0-9_.-]*$"], notEmpty: true },
   },
+  isAdmin: {
+    type: Sequelize.BOOLEAN,
+    defaultValue: false,
+  },
 });
 
 module.exports = User;

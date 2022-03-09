@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchProducts } from "../store/productsReducer";
 import { Link } from "react-router-dom";
+import { Button } from "@material-ui/core";
 
 const WomenProducts = () => {
   const products = useSelector((state) => state.products);
@@ -25,10 +26,17 @@ const WomenProducts = () => {
                   style={{ width: "600px", height: "400px" }}
                 />
                 <h2 className="all_products__price">${product.price}.00</h2>
-                <Link to={`/products/${product.id}`}>
-                  <button className="all_products__button">
-                    See product detail
-                  </button>
+                <Link
+                  to={`/products/${product.id}`}
+                  style={{ textDecoration: "none" }}
+                >
+                  <Button
+                    size="medium"
+                    variant="contained"
+                    style={{ backgroundColor: "grey" }}
+                  >
+                    View product details
+                  </Button>
                 </Link>
               </div>
             </div>

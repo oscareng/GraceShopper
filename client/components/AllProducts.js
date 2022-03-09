@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { fetchProducts } from '../store/productsReducer';
-import { Link } from 'react-router-dom';
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchProducts } from "../store/productsReducer";
+import { Link } from "react-router-dom";
 
 const AllProducts = () => {
   //this grabs the robots from the redux store
@@ -23,7 +23,7 @@ const AllProducts = () => {
               <img
                 className="all_products__image"
                 src={`../images/${product.imageUrl}`}
-                style={{ width: '600px', height: '400px' }}
+                style={{ width: "600px", height: "400px" }}
               />
               <h2 className="all_products__price">${product.price}.00</h2>
               <Link to={`/products/${product.id}`}>

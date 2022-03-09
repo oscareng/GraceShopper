@@ -163,31 +163,14 @@ export const fetchGetLocalBasket = () => {
 };
 export default function cartreducer(state = initialState, action) {
   switch (action.type) {
-    //Get multiple items in cart
     case GET_BASKET_ITEMS:
       return action.items;
     case ADD_TO_BASKET:
-      //Logic for adding item to basket
       return [...state, action.item];
-    case REMOVE_FROM_BASKET: {
-      //Logic for removing item from basket
-      //we clone the basket
-      let newBasket = [...state.basket];
-      //we check if the product exists
-      const index = state.basket.findIndex(
-        (basketItem) => basketItem.id === action.id
-      );
-      if (index >= 0) {
-        //item exists in basket, remove it...
-        newBasket.splice(index, 1);
-      } else {
-        console.warn(
-          `Can't remove product (id: ${action.id}) as its not in basket`
-        );
-      }
-      return { ...state, basket: newBasket };
-    }
-    case "SET_USER":
+    case REMOVE_FROM_BASKET:
+      const removedItem = state.filter((item) => item.id !== action.id.id);
+      return removedItem;
+    case SET_USER:
       return {
         ...state,
         user: action.user,
