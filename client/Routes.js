@@ -1,6 +1,6 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
-import { withRouter, Route } from "react-router-dom";
+import { withRouter, Route, Switch, Redirect } from "react-router-dom";
 import { Login, Signup } from "./components/AuthForm";
 import AllProducts from "./components/AllProducts";
 import SingleProduct from "./components/SingleProduct";
@@ -15,6 +15,7 @@ import Administrator from "./components/Administrator";
 import EditProduct from "./components/EditProduct";
 import SingleProductGuest from "./components/SingleProductGuest";
 import CheckoutGuest from "./components/CheckoutGuest";
+import UserForm from "./components/UserForm";
 
 /**
  * COMPONENT
@@ -27,18 +28,21 @@ class Routes extends Component {
   render() {
     return (
       <div>
-        <Route path="/" exact component={LandingPage} />
-        <Route path="/home" component={Home} />
-        <Route path="/login" component={Login} />
-        <Route path="/signup" component={Signup} />
-        <Route exact path="/products" component={AllProducts} />
-        <Route exact path="/products/:id" component={SingleProduct} />
-        <Route path="/checkout" component={Checkout} />
-        <Route path="/confirmation" component={Confirmation} />
-        <Route exact path="/womens" component={WomenProducts} />
-        <Route exact path="/mens" component={MenProducts} />
-        <Route exact path="/administrator" component={Administrator} />
-        <Route exact path="/editproduct/:id" component={EditProduct} />
+        <Switch>
+          <Route path="/" exact component={LandingPage} />
+          <Route path="/home" component={Home} />
+          <Route path="/login" component={Login} />
+          <Route path="/signup" component={Signup} />
+          <Route exact path="/products" component={AllProducts} />
+          <Route exact path="/products/:id" component={SingleProduct} />
+          <Route path="/checkout" component={Checkout} />
+          <Route path="/confirmation" component={Confirmation} />
+          <Route exact path="/womens" component={WomenProducts} />
+          <Route exact path="/mens" component={MenProducts} />
+          <Route exact path="/administrator" component={Administrator} />
+          <Route exact path="/editproduct/:id" component={EditProduct} />
+          <Route exact path="/form" component={UserForm} />
+        </Switch>
       </div>
     );
   }

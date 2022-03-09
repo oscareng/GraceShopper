@@ -56,6 +56,7 @@ export class CreateNewProduct extends React.Component {
 
           <label htmlFor="gender">Gender:</label>
           <select name="gender" value={gender} onChange={handleChange}>
+            <option value="Choose">Choose</option>
             <option value="Female">Female</option>
             <option value="Male">Male</option>
           </select>
@@ -63,6 +64,7 @@ export class CreateNewProduct extends React.Component {
 
           <label htmlFor="size">Size:</label>
           <select name="size" value={size} onChange={handleChange}>
+            <option value="Choose">Choose</option>
             <option value="Small">Small</option>
             <option value="Medium">Medium</option>
             <option value="Large">Large</option>
@@ -78,6 +80,7 @@ export class CreateNewProduct extends React.Component {
 
           <label htmlFor="category">Category:</label>
           <select name="category" value={category} onChange={handleChange}>
+            <option value="Choose">Choose</option>
             <option value="Shirt">Shirt</option>
             <option value="Sweater">Sweater</option>
             <option value="Hat">Hat</option>

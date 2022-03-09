@@ -5,6 +5,8 @@ import {
   fetchGetBasketItems,
   getBasketItems,
   addToBasket,
+  fetchRemoveFromBasket,
+  fetchIncreaseItemQuantity,
 } from "../store/cartReducer";
 import useAuth from "./useAuth.js";
 
@@ -32,9 +34,18 @@ export default function useCart() {
       dispatch(getBasketItems(items));
     }
   }
+  function increaseItemQuantity(item) {
+    dispatch(fetchIncreaseItemQuantity(item));
+  }
+
+  function removeFromCart(id) {
+    dispatch(fetchRemoveFromBasket(id));
+  }
   return {
     cartItems,
     addToCart,
     getCart,
+    removeFromCart,
+    increaseItemQuantity,
   };
 }

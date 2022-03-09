@@ -29,34 +29,36 @@ function Administrator() {
             <h2 className="administrator_title">
               List of products {`(${products.length})`}
             </h2>
-            <div className="administrator">
+            <div className="all_products">
               {products.map((product) => {
                 return (
                   <div key={product.id}>
-                    <div className="all_products__box">
-                      <h2 className="all_products__name">
-                        Product: {product.name}
-                      </h2>
+                    <div className="administrator_list__box">
+                      <div className="administrator_product_title_box">
+                        <h2 className="all_products__name">
+                          Product: {product.name}
+                        </h2>
+                      </div>
                       <img
                         className="all_products__image"
                         src={`../images/${product.imageUrl} `}
                       />
-                      <h2 className="all_products__price">
+                      <h2 className="all_products__name">
                         Description: {product.description}
                       </h2>
-                      <h2 className="all_products__price">
+                      <h2 className="all_products__name ">
                         Gender: {product.gender}
                       </h2>
-                      <h2 className="all_products__price">
+                      <h2 className="all_products__name ">
                         Size: {product.size}
                       </h2>
-                      <h2 className="all_products__price">
+                      <h2 className="all_products__name ">
                         Category: {product.category}
                       </h2>
-                      <h2 className="all_products__price">
+                      <h2 className="all_products__name ">
                         Stock: {product.stock}
                       </h2>
-                      <h2 className="all_products__price">
+                      <h2 className="all_products__name ">
                         Price: ${product.price}.00
                       </h2>
                       <Link to={`/editproduct/${product.id}`}>
