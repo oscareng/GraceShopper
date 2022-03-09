@@ -1,15 +1,16 @@
-import React from 'react';
-import { useStateValue } from './StateProvider';
-import { useDispatch } from 'react-redux';
-import useCart from '../hooks/useCart';
-import Toastify from 'toastify-js';
-import { Button } from '@material-ui/core';
+import React from "react";
+import { useStateValue } from "./StateProvider";
+import { useDispatch } from "react-redux";
+import useCart from "../hooks/useCart";
+import Toastify from "toastify-js";
+import { Button } from "@material-ui/core";
 
 import {
   fetchIncreaseItemQuantity,
   fetchGetBasketItem,
   fetchRemoveFromBasket,
-} from '../store/cartReducer';
+} from "../store/cartReducer";
+
 
 function CheckoutProduct(props) {
   const { name, imageUrl, saleprice, quantity, item } = props;
@@ -23,13 +24,13 @@ function CheckoutProduct(props) {
   function handleRemoveButton() {
     dispatch(fetchRemoveFromBasket(item.id));
     Toastify({
-      text: 'Item removed from Cart',
+      text: "Item removed from Cart",
       duration: 1500,
-      gravity: 'top',
-      position: 'right',
+      gravity: "top",
+      position: "right",
       stopOnFocus: true,
       style: {
-        background: 'black',
+        background: "black",
       },
     }).showToast();
   }
@@ -50,15 +51,8 @@ function CheckoutProduct(props) {
             +
           </button>
         </p>
-        <Button
-          size="medium"
-          variant="contained"
-          style={{ backgroundColor: 'grey' }}
-          onClick={() => handleRemoveButton(item.id)}
-        >
-          Remove
-        </Button>
 
+        <button onClick={() => removeFromCart(item.id)}>Remove</button>
         <p className="checkoutProduct__price">
           <small>$</small>
           <strong>{saleprice}</strong>

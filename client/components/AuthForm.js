@@ -1,7 +1,7 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { authenticate } from '../store';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { connect } from "react-redux";
+import { authenticate } from "../store";
+import { Link } from "react-router-dom";
 
 /**
  * COMPONENT
@@ -32,7 +32,7 @@ const AuthForm = (props) => {
       </form>
 
       <hr />
-      {displayName === 'Login' ? (
+      {displayName === "Login" ? (
         <Link to="/signup">
           <button> Sign Up Here </button>
         </Link>
@@ -52,16 +52,16 @@ const AuthForm = (props) => {
  */
 const mapLogin = (state) => {
   return {
-    name: 'login',
-    displayName: 'Login',
+    name: "login",
+    displayName: "Login",
     error: state.auth.error,
   };
 };
 
 const mapSignup = (state) => {
   return {
-    name: 'signup',
-    displayName: 'Sign Up',
+    name: "signup",
+    displayName: "Sign Up",
     error: state.auth.error,
   };
 };

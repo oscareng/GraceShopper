@@ -35,7 +35,6 @@ export const updateProduct = (product, history) => {
       `/api/products/${product.id}`,
       product
     );
-    console.log("myreducerproduct", product);
     dispatch(_updateProduct(updated));
     history.push("/");
   };

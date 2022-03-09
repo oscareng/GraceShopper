@@ -1,22 +1,22 @@
-import React, { useState } from 'react';
-import { makeStyles, Typography } from '@material-ui/core';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
-import { Link } from 'react-router-dom';
+import React, { useState } from "react";
+import { makeStyles, Typography } from "@material-ui/core";
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
     padding: theme.spacing(2),
 
-    '& .MuiTextField-root': {
+    "& .MuiTextField-root": {
       margin: theme.spacing(1),
-      width: '300px',
+      width: "300px",
     },
-    '& .MuiButtonBase-root': {
+    "& .MuiButtonBase-root": {
       margin: theme.spacing(2),
     },
   },
@@ -40,7 +40,8 @@ const Form = () => {
         required
       />
       <div>
-        <Link to="/confirmation" style={{ textDecoration: 'none' }}>
+
+        <Link to="/confirmation" style={{ textDecoration: "none" }}>
           <Button type="submit" variant="contained" color="primary">
             Confirm Order
           </Button>

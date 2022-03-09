@@ -7,8 +7,8 @@ import {
   addToBasket,
   fetchRemoveFromBasket,
   fetchIncreaseItemQuantity,
-} from '../store/cartReducer';
-import useAuth from './useAuth.js';
+} from "../store/cartReducer";
+import useAuth from "./useAuth.js";
 
 export default function useCart() {
   const { isLoggedIn } = useAuth();
