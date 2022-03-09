@@ -5,14 +5,12 @@ import {
   fetchIncreaseItemQuantity,
   fetchGetBasketItem,
 } from "../store/cartReducer";
+import useCart from "../hooks/useCart";
 
 function CheckoutProduct(props) {
-  const { name, imageUrl, saleprice, quantity, item } = props;
-  const dispatch = useDispatch();
-
-  function handleIncreaseButton(item) {
-    dispatch(fetchIncreaseItemQuantity(item));
-  }
+  const { name, imageUrl, price, quantity, item } = props;
+  const { increaseItemQuantity } = useCart();
+  useCart();
   return (
     <div className="checkoutProduct">
       <img className="checkoutProduct__image" src={imageUrl} alt="" />
@@ -23,7 +21,7 @@ function CheckoutProduct(props) {
           Quantity: {quantity}
           <button
             className="checkoutProduct__name"
-            onClick={() => handleIncreaseButton(item)}
+            onClick={() => increaseItemQuantity(item)}
             type="button"
           >
             +
@@ -31,7 +29,7 @@ function CheckoutProduct(props) {
         </p>
         <p className="checkoutProduct__price">
           <small>$</small>
-          <strong>{saleprice}</strong>
+          <strong>{price}</strong>
         </p>
       </div>
     </div>

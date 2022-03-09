@@ -30,7 +30,7 @@ function Checkout() {
                 <CheckoutProduct
                   key={item.id}
                   name={item.name}
-                  saleprice={item.saleprice}
+                  price={item.price}
                   imageUrl={`../images/${item.imageUrl}`}
                   quantity={item.quantity}
                   item={item}

@@ -5,6 +5,8 @@ import {
   fetchGetBasketItems,
   fetchGetLocalBasket,
   fetchAddToLocalBasket,
+  fetchIncreaseItemQuantity,
+  fetchIncreaseLocalItemQuantity,
 } from "../store/cartReducer";
 import useAuth from "./useAuth.js";
 
@@ -29,8 +31,16 @@ export default function useCart() {
       dispatch(fetchAddToLocalBasket(product));
     }
   }
+  function increaseItemQuantity(item) {
+    if (isLoggedIn) {
+      dispatch(fetchIncreaseItemQuantity(item));
+    } else {
+      dispatch(fetchIncreaseLocalItemQuantity(item));
+    }
+  }
   return {
     cartItems,
     addToCart,
+    increaseItemQuantity,
   };
 }

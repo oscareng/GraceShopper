@@ -65,8 +65,8 @@ export const fetchAddToLocalBasket = (item) => {
       if (items !== null) {
         //if cart item already exists in localstorage, increment quantity by one then replace new obj in array then add back to localstorage
         const found = items.find((element) => element.id === item.id);
-        found["quantity"] += 1;
         if (found) {
+          found["quantity"] += 1;
           const index = items.findIndex((element) => element.id === item.id);
           items[index] = found;
           window.localStorage.setItem("cartItems", JSON.stringify(items));
@@ -129,6 +129,21 @@ export const fetchIncreaseItemQuantity = (item) => {
       dispatch(increaseItemQuantity(basketItem));
     } catch (error) {
       console.log("fetchIncreaseItemQuantity thunk error", error);
+    }
+  };
+};
+
+export const fetchIncreaseLocalItemQuantity = (item) => {
+  return async (dispatch) => {
+    try {
+      const items = JSON.parse(window.localStorage.getItem("cartItems"));
+      item["quantity"] += 1;
+      const index = items.findIndex((element) => element.id === item.id);
+      items[index] = item;
+      window.localStorage.setItem("cartItems", JSON.stringify(items));
+      dispatch(increaseItemQuantity(item));
+    } catch (error) {
+      console.log("fetchIncreaseLocalItemQuantity thunk error", error);
     }
   };
 };

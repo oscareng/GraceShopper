@@ -7,8 +7,7 @@ function Subtotal() {
   console.log(cartItems);
   const total = cartItems.reduce(
     (previousValue, currentValue, currentIndex, array) => {
-      currentValue =
-        array[currentIndex].saleprice * array[currentIndex].quantity;
+      currentValue = array[currentIndex].price * array[currentIndex].quantity;
       return previousValue + currentValue;
     },
     //  previousValue.price + currentValue.price,
